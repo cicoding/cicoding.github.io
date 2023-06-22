@@ -2,16 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.cicoding.com/code/code3/</loc>
+    
+    <lastmod>2023-06-22T14:15:09.335Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.cicoding.com/other/interview/</loc>
+    
+    <lastmod>2023-06-21T15:48:43.130Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.cicoding.com/code/code2/</loc>
     
-    <lastmod>2023-06-19T07:41:47.438Z</lastmod>
+    <lastmod>2023-06-21T15:41:06.810Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.cicoding.com/code/code1/</loc>
     
-    <lastmod>2023-06-19T07:41:42.535Z</lastmod>
+    <lastmod>2023-06-21T15:32:59.233Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.cicoding.com/other/graduation-project/</loc>
+    
+    <lastmod>2023-06-21T14:53:45.093Z</lastmod>
     
   </url>
   
@@ -19,20 +40,6 @@
     <loc>https://www.cicoding.com/categories/index.html</loc>
     
     <lastmod>2023-06-19T07:14:50.277Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.cicoding.com/other/graduation-project/</loc>
-    
-    <lastmod>2023-06-19T06:26:17.096Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.cicoding.com/other/hexo-top-top-lable/</loc>
-    
-    <lastmod>2022-09-21T11:31:12.000Z</lastmod>
     
   </url>
   
