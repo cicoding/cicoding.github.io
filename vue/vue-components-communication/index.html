@@ -1,0 +1,480 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="编程分享网站">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.3.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://www.cicoding.com">
+    <meta name="baidu-site-verification" content="codeva-UPbQP9x8sR" />
+    <!--SEO-->
+
+<meta name="keywords" content="VUE" />
+
+
+<meta name="description" content="组件通信的方式如下：
+（1） props  &#x2F;  $emit父组件通过props向子组件传递数据，子组件通过$emit和父组件通信
+
+父组件向子组件传值
+
+
+props只能是父组件向子..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    VUE组件通信 |
+    
+    编程分享网站
+</title>
+
+<link rel="alternate" href="/atom.xml" title="编程分享网站" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<script>
+(function() {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    https://hexo-theme-snippet-1251680922.cos.ap-beijing.myqcloud.com/img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='zhaokejin'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://www.cicoding.com">
+                        编程分享网站</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/源码分享/"><i class="fa "></i>
+                                源码分享</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/面试宝典/"><i class="fa "></i>
+                                面试宝典</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/VUE/"><i class="fa "></i>
+                                前端面试</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="VUE组件通信">
+            
+            VUE组件通信
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8/">面试宝典</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/VUE/" rel="tag">VUE</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2024/02/03</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>组件通信的方式如下：</p>
+<h3 id="（1）-props-x2F-emit"><a href="#（1）-props-x2F-emit" class="headerlink" title="（1） props  &#x2F;  $emit"></a>（1） props  &#x2F;  $emit</h3><p>父组件通过props向子组件传递数据，子组件通过$emit和父组件通信</p>
+<ol>
+<li>父组件向子组件传值</li>
+</ol>
+<ul>
+<li><p>props只能是父组件向子组件进行传值，props使得父子组件之间形成了一个单向下行绑定。子组件的数据会随着父组件不断更新。</p>
+</li>
+<li><p>props 可以显示定义一个或一个以上的数据，对于接收的数据，可以是各种数据类型，同样也可以传递一个函数。</p>
+</li>
+<li><p>props属性名规则：若在props中使用驼峰形式，模板中需要使用短横线的形式</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// 父组件</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id=&quot;father&quot;&gt;</span><br><span class="line">        &lt;son :msg=&quot;msgData&quot; :fn=&quot;myFunction&quot;&gt;&lt;/son&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">import son from &quot;./son.vue&quot;;</span><br><span class="line">export default &#123;</span><br><span class="line">    name: father,</span><br><span class="line">    data() &#123;</span><br><span class="line">        msgData: &quot;父组件数据&quot;;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        myFunction() &#123;</span><br><span class="line">            console.log(&quot;vue&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    components: &#123;</span><br><span class="line">        son</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 子组件</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id=&quot;son&quot;&gt;</span><br><span class="line">        &lt;p&gt;&#123;&#123;msg&#125;&#125;&lt;/p&gt;</span><br><span class="line">        &lt;button @click=&quot;fn&quot;&gt;按钮&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    name: &quot;son&quot;,</span><br><span class="line">    props: [&quot;msg&quot;, &quot;fn&quot;]</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>子组件向父组件传值</li>
+</ol>
+<ul>
+<li>$emit绑定一个自定义事件，当这个事件被执行的时就会将参数传递给父组件，而父组件通过v-on监听并接收参数。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">// 父组件</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;section&quot;&gt;</span><br><span class="line">    &lt;com-article :articles=&quot;articleList&quot; @onEmitIndex=&quot;onEmitIndex&quot;&gt;&lt;/com-article&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123;currentIndex&#125;&#125;&lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">import comArticle from &#x27;./test/article.vue&#x27;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#x27;comArticle&#x27;,</span><br><span class="line">  components: &#123; comArticle &#125;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      currentIndex: -1,</span><br><span class="line">      articleList: [&#x27;红楼梦&#x27;, &#x27;西游记&#x27;, &#x27;三国演义&#x27;]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    onEmitIndex(idx) &#123;</span><br><span class="line">      this.currentIndex = idx</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//子组件</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;div v-for=&quot;(item, index) in articles&quot; :key=&quot;index&quot; @click=&quot;emitIndex(index)&quot;&gt;&#123;&#123;item&#125;&#125;&lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  props: [&#x27;articles&#x27;],</span><br><span class="line">  methods: &#123;</span><br><span class="line">    emitIndex(index) &#123;</span><br><span class="line">      this.$emit(&#x27;onEmitIndex&#x27;, index) // 触发父组件的方法，并传递参数index</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="（2）eventBus事件总线（-emit-x2F-on）"><a href="#（2）eventBus事件总线（-emit-x2F-on）" class="headerlink" title="（2）eventBus事件总线（$emit &#x2F; $on）"></a>（2）eventBus事件总线（$emit &#x2F; $on）</h3><p>eventBus事件总线适用于父子组件、非父子组件等之间的通信，使用步骤如下：</p>
+<p>（1）创建事件中心管理组件之间的通信</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// event-bus.js</span><br><span class="line"> </span><br><span class="line">import Vue from &#x27;vue&#x27;</span><br><span class="line">export const EventBus = new Vue()</span><br></pre></td></tr></table></figure>
+
+<p>（2）发送事件</p>
+<p>假设有两个兄弟组件firstCom和secondCom：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;first-com&gt;&lt;/first-com&gt;</span><br><span class="line">    &lt;second-com&gt;&lt;/second-com&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">import firstCom from &#x27;./firstCom.vue&#x27;</span><br><span class="line">import secondCom from &#x27;./secondCom.vue&#x27;</span><br><span class="line">export default &#123;</span><br><span class="line">  components: &#123; firstCom, secondCom &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在firstCom组件中发送事件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;button @click=&quot;add&quot;&gt;加法&lt;/button&gt;    </span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123;EventBus&#125; from &#x27;./event-bus.js&#x27; // 引入事件中心</span><br><span class="line"> </span><br><span class="line">export default &#123;</span><br><span class="line">  data()&#123;</span><br><span class="line">    return&#123;</span><br><span class="line">      num:0</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods:&#123;</span><br><span class="line">    add()&#123;</span><br><span class="line">      EventBus.$emit(&#x27;addition&#x27;, &#123;</span><br><span class="line">        num:this.num++</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>（3）接收事件</p>
+<p>在secondCom组件中发送事件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;求和: &#123;&#123;count&#125;&#125;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; EventBus &#125; from &#x27;./event-bus.js&#x27;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      count: 0</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    EventBus.$on(&#x27;addition&#x27;, param =&gt; &#123;</span><br><span class="line">      this.count = this.count + param.num;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在上述代码中，这就相当于将num值存贮在了事件总线中，在其他组件中可以直接访问。事件总线就相当于一个桥梁，不用组件通过它来通信。</p>
+<p>虽然看起来比较简单，但是这种方法也有不变之处，如果项目过大，使用这种方式进行通信，后期维护起来会很困难。</p>
+<h3 id="（3）依赖注入（provide-x2F-inject）"><a href="#（3）依赖注入（provide-x2F-inject）" class="headerlink" title="（3）依赖注入（provide&#x2F; inject）"></a>（3）依赖注入（provide&#x2F; inject）</h3><p>这种方式就是Vue中的依赖注入，该方法用于父子组件之间的通信。当然这里所说的父子不一定是真正的父子，也可以是祖孙组件，在层数很深的情况下，可以使用这种方法来进行传值。就不用一层一层的传递了。</p>
+<p>provide &#x2F; inject是Vue提供的两个钩子，和data、methods是同级的。并且provide的书写形式和data一样。</p>
+<ul>
+<li><p>provide 钩子用来发送数据或方法</p>
+</li>
+<li><p>inject钩子用来接收数据或方法</p>
+</li>
+</ul>
+<p>在父组件中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">provide() &#123;</span><br><span class="line"> return &#123;</span><br><span class="line">    num: this.num</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在子组件中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inject: [&#x27;num&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p>还可以这样写，这样写就可以访问父组件中的所有属性：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">provide() &#123;</span><br><span class="line"> return &#123;</span><br><span class="line">    app: this</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line">data() &#123;</span><br><span class="line"> return &#123;</span><br><span class="line">    num: 1</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">inject: [&#x27;app&#x27;]</span><br><span class="line">console.log(this.app.num)</span><br></pre></td></tr></table></figure>
+
+<p>注意： 依赖注入所提供的属性是非响应式的。</p>
+<h3 id="（3）ref-x2F-refs"><a href="#（3）ref-x2F-refs" class="headerlink" title="（3）ref &#x2F; $refs"></a>（3）ref &#x2F; $refs</h3><p>这种方式也是实现父子组件之间的通信。</p>
+<p>ref： 这个属性用在子组件上，它的引用就指向了子组件的实例。可以通过实例来访问组件的数据和方法。</p>
+<p>在子组件中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;</span><br><span class="line">  data () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      name: &#x27;JavaScript&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    sayHello () &#123;</span><br><span class="line">      console.log(&#x27;hello&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在父组件中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;child ref=&quot;child&quot;&gt;&lt;/component-a&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  import child from &#x27;./child.vue&#x27;</span><br><span class="line">  export default &#123;</span><br><span class="line">    components: &#123; child &#125;,</span><br><span class="line">    mounted () &#123;</span><br><span class="line">      console.log(this.$refs.child.name);  // JavaScript</span><br><span class="line">      this.$refs.child.sayHello();  // hello</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="（4）-parent-x2F-children"><a href="#（4）-parent-x2F-children" class="headerlink" title="（4）$parent &#x2F; $children"></a>（4）$parent &#x2F; $children</h3><ul>
+<li><p>使用$parent可以让组件访问父组件的实例（访问的是上一级父组件的属性和方法）</p>
+</li>
+<li><p>使用$children可以让组件访问子组件的实例，但是，$children并不能保证顺序，并且访问的数据也不是响应式的。</p>
+</li>
+</ul>
+<p>在子组件中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;span&gt;&#123;&#123;message&#125;&#125;&lt;/span&gt;</span><br><span class="line">    &lt;p&gt;获取父组件的值为:  &#123;&#123;parentVal&#125;&#125;&lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      message: &#x27;Vue&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed:&#123;</span><br><span class="line">    parentVal()&#123;</span><br><span class="line">      return this.$parent.msg;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在父组件中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">// 父组件中</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;hello_world&quot;&gt;</span><br><span class="line">    &lt;div&gt;&#123;&#123;msg&#125;&#125;&lt;/div&gt;</span><br><span class="line">    &lt;child&gt;&lt;/child&gt;</span><br><span class="line">    &lt;button @click=&quot;change&quot;&gt;点击改变子组件值&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">import child from &#x27;./child.vue&#x27;</span><br><span class="line">export default &#123;</span><br><span class="line">  components: &#123; child &#125;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      msg: &#x27;Welcome&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    change() &#123;</span><br><span class="line">      // 获取到子组件</span><br><span class="line">      this.$children[0].message = &#x27;JavaScript&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码中，子组件获取到了父组件的parentVal值，父组件改变了子组件中message的值。</p>
+<p>需要注意：</p>
+<ul>
+<li><p>通过$parent访问到的是上一级父组件的实例，可以使用$root来访问根组件的实例</p>
+</li>
+<li><p>在组件中使用$children拿到的是所有的子组件的实例，它是一个数组，并且是无序的</p>
+</li>
+<li><p>在根组件#app上拿$parent得到的是new Vue()的实例，在这实例上再拿$parent得到的是undefined，而在最底层的子组件拿$children是个空数组</p>
+</li>
+<li><p>$children 的值是数组，而$parent是个对象</p>
+</li>
+</ul>
+<h3 id="（5）-attrs-x2F-listeners"><a href="#（5）-attrs-x2F-listeners" class="headerlink" title="（5）$attrs &#x2F; $listeners"></a>（5）$attrs &#x2F; $listeners</h3><p>考虑一种场景，如果A是B组件的父组件，B是C组件的父组件。如果想要组件A给组件C传递数据，这种隔代的数据，该使用哪种方式呢？</p>
+<p>如果是用props&#x2F;$emit来一级一级的传递，确实可以完成，但是比较复杂；如果使用事件总线，在多人开发或者项目较大的时候，维护起来很麻烦；如果使用Vuex，的确也可以，但是如果仅仅是传递数据，那可能就有点浪费了。</p>
+<p>针对上述情况，Vue引入了$attrs &#x2F; $listeners，实现组件之间的跨代通信。</p>
+<p>先来看一下inheritAttrs，它的默认值true，继承所有的父组件属性除props之外的所有属性；inheritAttrs：false 只继承class属性 。</p>
+<ul>
+<li><p>$attrs：继承所有的父组件属性（除了prop传递的属性、class 和 style ），一般用在子组件的子元素上</p>
+</li>
+<li><p>$listeners：该属性是一个对象，里面包含了作用在这个组件上的所有监听器，可以配合 v-on&#x3D;”$listeners” 将所有的事件监听器指向这个组件的某个特定的子元素。（相当于子组件继承父组件的事件）</p>
+</li>
+</ul>
+<p>A组件（APP.vue）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">        //此处监听了两个事件，可以在B组件或者C组件中直接触发 </span><br><span class="line">        &lt;child1 :p-child1=&quot;child1&quot; :p-child2=&quot;child2&quot; @test1=&quot;onTest1&quot; @test2=&quot;onTest2&quot;&gt;&lt;/child1&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import Child1 from &#x27;./Child1.vue&#x27;;</span><br><span class="line">export default &#123;</span><br><span class="line">    components: &#123; Child1 &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        onTest1() &#123;</span><br><span class="line">            console.log(&#x27;test1 running&#x27;);</span><br><span class="line">        &#125;,</span><br><span class="line">        onTest2() &#123;</span><br><span class="line">            console.log(&#x27;test2 running&#x27;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>B组件（Child1.vue）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;child-1&quot;&gt;</span><br><span class="line">        &lt;p&gt;props: &#123;&#123;pChild1&#125;&#125;&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;$attrs: &#123;&#123;$attrs&#125;&#125;&lt;/p&gt;</span><br><span class="line">        &lt;child2 v-bind=&quot;$attrs&quot; v-on=&quot;$listeners&quot;&gt;&lt;/child2&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import Child2 from &#x27;./Child2.vue&#x27;;</span><br><span class="line">export default &#123;</span><br><span class="line">    props: [&#x27;pChild1&#x27;],</span><br><span class="line">    components: &#123; Child2 &#125;,</span><br><span class="line">    inheritAttrs: false,</span><br><span class="line">    mounted() &#123;</span><br><span class="line">        this.$emit(&#x27;test1&#x27;); // 触发APP.vue中的test1方法</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>C 组件 (Child2.vue)：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;child-2&quot;&gt;</span><br><span class="line">        &lt;p&gt;props: &#123;&#123;pChild2&#125;&#125;&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;$attrs: &#123;&#123;$attrs&#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    props: [&#x27;pChild2&#x27;],</span><br><span class="line">    inheritAttrs: false,</span><br><span class="line">    mounted() &#123;</span><br><span class="line">        this.$emit(&#x27;test2&#x27;);// 触发APP.vue中的test2方法</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在上述代码中：</p>
+<ul>
+<li><p>C组件中能直接触发test的原因在于 B组件调用C组件时 使用 v-on 绑定了$listeners 属性</p>
+</li>
+<li><p>在B组件中通过v-bind 绑定$attrs属性，C组件可以直接获取到A组件中传递下来的props（除了B组件中props声明的）</p>
+</li>
+</ul>
+<h3 id="（6）总结"><a href="#（6）总结" class="headerlink" title="（6）总结"></a>（6）总结</h3><p>（1）父子组件间通信</p>
+<ul>
+<li><p>子组件通过 props 属性来接受父组件的数据，然后父组件在子组件上注册监听事件，子组件通过 emit 触发事件来向父组件发送数据。</p>
+</li>
+<li><p>通过 ref 属性给子组件设置一个名字。父组件通过 $refs 组件名来获得子组件，子组件通过 $parent 获得父组件，这样也可以实现通信。</p>
+</li>
+<li><p>使用 provide&#x2F;inject，在父组件中通过 provide提供变量，在子组件中通过 inject 来将变量注入到组件中。不论子组件有多深，只要调用了 inject 那么就可以注入 provide中的数据。</p>
+</li>
+</ul>
+<p>（2）兄弟组件间通信</p>
+<ul>
+<li><p>使用 eventBus 的方法，它的本质是通过创建一个空的 Vue 实例来作为消息传递的对象，通信的组件引入这个实例，通信的组件通过在这个实例上监听和触发事件，来实现消息的传递。</p>
+</li>
+<li><p>通过 $parent&#x2F;$refs 来获取到兄弟组件，也可以进行通信。</p>
+</li>
+</ul>
+<p>（3）任意组件之间</p>
+<ul>
+<li>使用 eventBus ，其实就是创建一个事件中心，相当于中转站，可以用它来传递事件和接收事件。</li>
+</ul>
+<p>如果业务逻辑复杂，很多组件之间需要同时处理一些公共的数据，这个时候采用上面这一些方法可能不利于项目的维护。这个时候可以使用 vuex ，vuex 的思想就是将这一些公共的数据抽离出来，将它作为一个全局的变量来管理，然后其他组件就可以对这个公共数据进行读写操作，这样达到了解耦的目的。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">编程分享网站</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/vue/vue-router/" class="pre-post btn btn-default" title='VUE路由'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            VUE路由</span>
+    </a>
+    
+    
+    <a href="/vue/vue-life-cycle/" class="next-post btn btn-default" title='VUE声明周期'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            VUE声明周期</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89-props-x2F-emit"><span class="toc-text">（1） props  &#x2F;  $emit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89eventBus%E4%BA%8B%E4%BB%B6%E6%80%BB%E7%BA%BF%EF%BC%88-emit-x2F-on%EF%BC%89"><span class="toc-text">（2）eventBus事件总线（$emit &#x2F; $on）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%EF%BC%88provide-x2F-inject%EF%BC%89"><span class="toc-text">（3）依赖注入（provide&#x2F; inject）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%883%EF%BC%89ref-x2F-refs"><span class="toc-text">（3）ref &#x2F; $refs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%884%EF%BC%89-parent-x2F-children"><span class="toc-text">（4）$parent &#x2F; $children</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%885%EF%BC%89-attrs-x2F-listeners"><span class="toc-text">（5）$attrs &#x2F; $listeners</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%886%EF%BC%89%E6%80%BB%E7%BB%93"><span class="toc-text">（6）总结</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2018 - 2023
+                    
+                </span> |
+                <span>
+                    <a href="//www.cicoding.com" class="copyright-links" target="_blank" rel="nofollow">编程分享网站</a>
+                </span>|
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    <a href="//beian.miit.gov.cn" class="copyright-links" target="_blank" rel="nofollow">鲁ICP备18033870号</a>
+                </span> |
+                <span>
+                    <a href="//beian.miit.gov.cn" class="copyright-links" target="_blank" rel="nofollow">鲁ICP备18033870号-1</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/assets/tagcanvas.min.js?rev=2.9.js"></script>
+
+<script>
+var tagOption = {
+    textColour: '#444', // 字体颜色
+    outlineMethod: 'block', // 选中模式
+    outlineColour: '#FFDAB9', // 选中模式的颜色
+    interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+    textHeight: 13,
+    outlineRadius: 3,
+    freezeActive: true || '', // 选中的标签是否继续滚动
+    frontSelect: true || '', // 不选标签云后部的标签
+    initial: [0.1, -0.1],
+    depth: 0.5,
+    decel: 0.95,
+    maxSpeed: 0.03,
+    reverse: true || '', // 是否反向触发
+    fadeIn: 500, // 进入动画时间
+    wheelZoom: false || '' // 是否启用鼠标滚轮
+}
+TagCanvas.Start('tag-cloud-3d', '', tagOption);
+</script>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+
+</body>
+</html>
