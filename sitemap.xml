@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.cicoding.com/other/graduation-project/</loc>
+    <loc>https://www.cicoding.com/other/interview/</loc>
     
-    <lastmod>2024-02-03T02:46:25.917Z</lastmod>
+    <lastmod>2024-02-24T08:13:07.104Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.cicoding.com/other/interview/</loc>
+    <loc>https://www.cicoding.com/nginx/nginx/</loc>
     
-    <lastmod>2024-02-03T02:46:02.587Z</lastmod>
+    <lastmod>2024-02-24T08:12:48.342Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.cicoding.com/redis/redis/</loc>
+    
+    <lastmod>2024-02-24T08:12:33.906Z</lastmod>
     
   </url>
   
@@ -61,20 +68,6 @@
     <loc>https://www.cicoding.com/vue/vue-life-cycle/</loc>
     
     <lastmod>2024-02-03T02:10:11.653Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.cicoding.com/nginx/nginx/</loc>
-    
-    <lastmod>2023-07-14T01:47:36.391Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.cicoding.com/redis/redis/</loc>
-    
-    <lastmod>2023-07-14T00:57:45.287Z</lastmod>
     
   </url>
   

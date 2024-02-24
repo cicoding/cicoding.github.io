@@ -10,7 +10,7 @@
         <category>面试宝典</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
+        <tag>interview</tag>
       </tags>
   </entry>
   <entry>
@@ -1725,7 +1725,7 @@
         <category>面试宝典</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
+        <tag>Redis</tag>
       </tags>
   </entry>
   <entry>
@@ -1975,19 +1975,7 @@
         <category>面试宝典</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>本站说明</title>
-    <url>/other/graduation-project/</url>
-    <content><![CDATA[<p>你猜</p>
-]]></content>
-      <categories>
-        <category>编程分享网站</category>
-      </categories>
-      <tags>
-        <tag>编程分享网站</tag>
+        <tag>Nginx</tag>
       </tags>
   </entry>
   <entry>
