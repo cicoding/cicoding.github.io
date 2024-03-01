@@ -14,6 +14,364 @@
       </tags>
   </entry>
   <entry>
+    <title>Spring面试题总结(二)</title>
+    <url>/spring/spring2/</url>
+    <content><![CDATA[<p>Spring作为现代开发中最流行的框架之一，让开发者可以更加方便高效地构建应用系统。但是对于初学者而言，常常会遇到很多困惑。本篇文章收集了50道常见的Spring面试题，并对每道题进行了详细的解释，希望能够对读者有所帮助。</p>
+<h3 id="1-Spring是什么？作用是什么？"><a href="#1-Spring是什么？作用是什么？" class="headerlink" title="1.Spring是什么？作用是什么？"></a>1.Spring是什么？作用是什么？</h3><p>Spring是一个轻量级的JavaEE框架，它主要解决企业应用中的复杂性问题。Spring框架有三个核心部分：IoC容器、AOP和数据访问&#x2F;集成层。Spring中的IoC容器提供了一种对象创建和对象之间关系管理的机制，以实现松散耦合和可扩展性。AOP提供了一种很好的方式来实现横向关注点的处理，如事务管理，安全检查，缓存等。数据访问&#x2F;集成层则提供了许多针对不同数据持久化技术的实现，比如JDBC，ORM和NoSQL。</p>
+<h3 id="2-你对IoC（控制反转-Inversion-of-Control）是怎么理解的？"><a href="#2-你对IoC（控制反转-Inversion-of-Control）是怎么理解的？" class="headerlink" title="2.你对IoC（控制反转 Inversion of Control）是怎么理解的？"></a>2.你对IoC（控制反转 Inversion of Control）是怎么理解的？</h3><p>IoC是一种设计思想，通过将对象之间的依赖关系交给容器来管理，从而实现松散耦合。在Spring中，IoC容器扮演了一个中心角色，负责创建对象，装配对象之间的依赖关系，并管理它们的整个生命周期。IoC还提供了一些高级功能，如AOP和事件驱动等，可以进一步增强应用程序的可维护性和可扩展性。</p>
+<h3 id="3-什么是AOP（面向切面编程-Aspect-Oriented-Programming）？"><a href="#3-什么是AOP（面向切面编程-Aspect-Oriented-Programming）？" class="headerlink" title="3.什么是AOP（面向切面编程 Aspect Oriented Programming）？"></a>3.什么是AOP（面向切面编程 Aspect Oriented Programming）？</h3><p>AOP是一种编程范式，它能够在程序运行期间动态地将代码切入到原有代码的流程中，从而实现横向关注点的处理，如日志记录、事务管理和安全检查等。在Spring中，AOP是通过代理模式来实现的，在创建Bean时为Bean生成一个代理对象，代理对象能够拦截指定方法的调用，并在执行前或执行后执行特定操作。</p>
+<h3 id="4-Spring中Bean之间的依赖关系是怎样的？"><a href="#4-Spring中Bean之间的依赖关系是怎样的？" class="headerlink" title="4.Spring中Bean之间的依赖关系是怎样的？"></a>4.Spring中Bean之间的依赖关系是怎样的？</h3><p>在Spring中，Bean之间的依赖关系主要通过构造函数注入、Setter方法注入和自动注入来实现。构造函数注入是通过Bean的构造方法注入其他Bean作为参数来实现；Setter方法注入是通过Bean的Setter方法来注入其他Bean；自动注入则是通过IoC容器在Bean创建时自动发现并注入其他Bean，可以通过设置@Autowired或@Resource注解来完成。</p>
+<h3 id="5-Spring框架中的单例模式是怎样实现的？"><a href="#5-Spring框架中的单例模式是怎样实现的？" class="headerlink" title="5.Spring框架中的单例模式是怎样实现的？"></a>5.Spring框架中的单例模式是怎样实现的？</h3><p>在Spring中，默认情况下，所有的Bean都是单例的。当IoC容器创建一个Bean时，它会缓存该Bean的实例，并在后续请求中返回相同的实例。这种机制可以提高应用程序的性能并减少内存消耗，但也需要注意线程安全和状态管理等问题。</p>
+<h3 id="6-Spring中的事务管理是如何实现的？"><a href="#6-Spring中的事务管理是如何实现的？" class="headerlink" title="6.Spring中的事务管理是如何实现的？"></a>6.Spring中的事务管理是如何实现的？</h3><p>Spring通过AOP在运行时动态地将事务相关的逻辑切入到指定的方法中，从而实现事务管理。通常情况下，Spring使用声明式事务管理来管理事务。开发者可以通过@Transactional注解或XML配置文件来定义事务范围、传播属性以及回滚规则等。</p>
+<h3 id="7-Spring的优势是什么？"><a href="#7-Spring的优势是什么？" class="headerlink" title="7.Spring的优势是什么？"></a>7.Spring的优势是什么？</h3><p>Spring的主要优势有：</p>
+<p>1）提高了应用程序的可扩展性和可维护性。</p>
+<p>2）提供了一种松散耦合的方式来管理对象之间的依赖关系。</p>
+<p>3）提供了完整的数据访问&#x2F;集成层，支持多种持久化技术。</p>
+<p>4）提供了AOP支持，可以很方便地实现横向关注点的处理。</p>
+<p>5）提供了很好的集成支持，可以与其他框架无缝协作。</p>
+<h3 id="8-解释一下Spring中的BeanFactory和ApplicationContext有什么区别。"><a href="#8-解释一下Spring中的BeanFactory和ApplicationContext有什么区别。" class="headerlink" title="8.解释一下Spring中的BeanFactory和ApplicationContext有什么区别。"></a>8.解释一下Spring中的BeanFactory和ApplicationContext有什么区别。</h3><p>BeanFactory是Spring IoC容器的最基本形式，提供了基本的IoC功能。它是延迟初始化的，即当一个Bean被实际使用时才被创建。ApplicationContext是BeanFactory的子接口，提供了更多的企业级功能，如AOP，事件驱动，国际化等。ApplicationContext也是预初始化的，即在容器启动时就已经创建了所有的Bean。</p>
+<h3 id="9-Spring中的注解有哪些？"><a href="#9-Spring中的注解有哪些？" class="headerlink" title="9.Spring中的注解有哪些？"></a>9.Spring中的注解有哪些？</h3><p>Spring中的常用注解有：</p>
+<p>1）@Component、@Service、@Repository、@Controller：用于标识Bean的角色。</p>
+<p>2）@Autowired、@Resource：用于自动装配Bean。</p>
+<p>3）@PostConstruct、@PreDestroy：用于指定初始化和销毁方法。</p>
+<p>4）@Transactional：用于声明式事务管理。</p>
+<p>5）@Scope：用于指定Bean作用域。</p>
+<h3 id="10-Spring-MVC框架的流程是怎样的？"><a href="#10-Spring-MVC框架的流程是怎样的？" class="headerlink" title="10.Spring MVC框架的流程是怎样的？"></a>10.Spring MVC框架的流程是怎样的？</h3><p>Spring MVC的处理流程如下：</p>
+<p>1）客户端向服务器发起请求。</p>
+<p>2）DispatcherServlet接收到请求并将请求发送给处理器映射器进行处理器的映射查找。</p>
+<p>3）处理器映射器将请求的URL映射到相应的控制器(Controller)上，并返回处理器及其拦截器(如果有)。</p>
+<p>4）DispatcherServlet调用处理器适配器(Adapter)执行映射的处理器(Controller)。</p>
+<p>5）处理器(Controller)执行后返回ModelAndView对象。</p>
+<p>6）DispatcherServlet将ModelAndView对象交给视图解析器(ViewResolver)进行解析。</p>
+<p>7）视图解析器(ViewResolver)解析出对应的视图(View)。</p>
+<p>8）DispatcherServlet将Model数据和View视图进行渲染后返回给客户端。</p>
+<h3 id="11-Spring-Boot是什么？与传统的Spring框架有什么区别？"><a href="#11-Spring-Boot是什么？与传统的Spring框架有什么区别？" class="headerlink" title="11.Spring Boot是什么？与传统的Spring框架有什么区别？"></a>11.Spring Boot是什么？与传统的Spring框架有什么区别？</h3><p>Spring Boot是一种基于Spring的快速应用开发框架，它能够让开发者更加快速地搭建基于Spring的应用程序，并提供了自动化配置、快速启动等便利功能。相比传统的Spring框架，Spring Boot具有更简洁的配置方式和更快的启动速度，同时还提供了更多的功能和特性支持。</p>
+<h3 id="12-解释一下Spring的生命周期。"><a href="#12-解释一下Spring的生命周期。" class="headerlink" title="12.解释一下Spring的生命周期。"></a>12.解释一下Spring的生命周期。</h3><p>在Spring中，Bean的生命周期包括以下几个阶段：</p>
+<p>1）实例化：当IoC容器读取到Bean的定义后，创建一个新的Bean实例。</p>
+<p>2）属性注入：IoC容器将Bean中声明的依赖关系和配置信息注入到Bean中。</p>
+<p>3）BeanPostProcessor前置处理：如果Bean中定义了BeanPostProcessor接口的实现类，它们将在Bean初始化之前被调用。</p>
+<p>4）初始化：如果Bean实现了InitializingBean接口，则在所有属性都被设置完毕后调用afterPropertiesSet()方法。同时，也可以通过@Bean(initMethod &#x3D; “init”)来指定Bean的初始化方法。</p>
+<p>5）BeanPostProcessor后置处理：如果Bean中定义了BeanPostProcessor接口的实现类，它们将在Bean初始化之后被调用。</p>
+<p>6）销毁：如果Bean实现了DisposableBean接口，则在容器关闭或者该Bean被从容器中移除时调用destroy()方法。同时，也可以通过@Bean(destroyMethod &#x3D; “destroy”)来指定Bean的销毁方法。</p>
+<h3 id="13-Spring中的IOC如何管理对象？"><a href="#13-Spring中的IOC如何管理对象？" class="headerlink" title="13.Spring中的IOC如何管理对象？"></a>13.Spring中的IOC如何管理对象？</h3><p>在Spring中，IOC通过Bean工厂来管理对象，Bean工厂是提供了一种对象创建和对象之间关系管理的机制。它在读取配置文件时会自动创建和装配对象，并缓存这些对象以便后续使用。开发者可以通过构造器注入、Setter方法注入和自动注入等方式来管理对象之间的依赖关系。</p>
+<h3 id="14-Spring中的AOP的具体实现方式有哪些？"><a href="#14-Spring中的AOP的具体实现方式有哪些？" class="headerlink" title="14.Spring中的AOP的具体实现方式有哪些？"></a>14.Spring中的AOP的具体实现方式有哪些？</h3><p>Spring中实现AOP的主要方式有两种：JDK动态代理和CGLIB代理。JDK动态代理又叫接口代理，它是基于Java反射机制实现的，要求目标对象必须实现至少一个接口；CGLIB代理则是基于字节码操作实现的，当目标对象没有实现接口时，它就会使用CGLIB代理。通常情况下，Spring默认使用JDK动态代理来实现AOP，但如果目标对象没有实现任何接口，则会自动切换到使用CGLIB代理。</p>
+<h3 id="15-Spring中的JdbcTemplate是什么？使用JdbcTemplate需要做哪些配置？"><a href="#15-Spring中的JdbcTemplate是什么？使用JdbcTemplate需要做哪些配置？" class="headerlink" title="15.Spring中的JdbcTemplate是什么？使用JdbcTemplate需要做哪些配置？"></a>15.Spring中的JdbcTemplate是什么？使用JdbcTemplate需要做哪些配置？</h3><p>JdbcTemplate是Spring提供的一个对JDBC访问的封装，它简化了JDBC操作的繁琐和冗长，能够提高开发效率。使用JdbcTemplate需要在Spring的配置文件中配置基本数据源信息、配置JdbcTemplate Bean以及为JdbcTemplate Bean配置数据源。</p>
+<h3 id="16-解释一下Spring中的循环依赖问题。"><a href="#16-解释一下Spring中的循环依赖问题。" class="headerlink" title="16.解释一下Spring中的循环依赖问题。"></a>16.解释一下Spring中的循环依赖问题。</h3><p>循环依赖指两个或多个Bean之间相互引用，形成了一个无限循环调用的情况。在Spring容器中，如果存在循环依赖，但是都是单例模式的Bean，则可以通过Spring容器提前暴露正在创建的Bean，从而避免循环依赖问题。如果存在循环依赖且其中一方是原型模式的Bean，则Spring无法处理这种情况。</p>
+<h3 id="17-Spring中的事件驱动机制是怎样的？有哪些默认事件？"><a href="#17-Spring中的事件驱动机制是怎样的？有哪些默认事件？" class="headerlink" title="17.Spring中的事件驱动机制是怎样的？有哪些默认事件？"></a>17.Spring中的事件驱动机制是怎样的？有哪些默认事件？</h3><p>Spring中的事件驱动机制基于观察者模式实现。当一个Bean发生事件时，它会创建一个事件对象并将其发布到Spring容器上。容器中所有对该事件对象感兴趣的Bean都会收到事件通知并进行相应的处理。Spring中默认的事件有：ContextRefreshedEvent、ContextStartedEvent、ContextStoppedEvent和ContextClosedEvent。</p>
+<h3 id="18-Spring的MVC框架中，HandlerAdapter的作用是什么？"><a href="#18-Spring的MVC框架中，HandlerAdapter的作用是什么？" class="headerlink" title="18.Spring的MVC框架中，HandlerAdapter的作用是什么？"></a>18.Spring的MVC框架中，HandlerAdapter的作用是什么？</h3><p>HandlerAdapter是Spring MVC框架中的一个重要组件，它的作用是将请求交给相应的处理器(Controller)进行处理，并负责调用处理器的方法来生成ModelAndView对象。</p>
+<h3 id="19-Autowired和-Resource注解用来干嘛的？"><a href="#19-Autowired和-Resource注解用来干嘛的？" class="headerlink" title="19.@Autowired和@Resource注解用来干嘛的？"></a>19.@Autowired和@Resource注解用来干嘛的？</h3><p>@Autowired和@Resource注解是用于自动装配Bean的。@Autowired是Spring提供的注解，可以在Setter方法上、构造函数上、类属性上进行标注，用于自动注入匹配类型的Bean。@Resource是JavaEE提供的注解，可以在Setter方法上或类属性上进行标注，用于自动注入指定名称和类型匹配的Bean。</p>
+<h3 id="20-Spring中的事务传播属性有哪些？"><a href="#20-Spring中的事务传播属性有哪些？" class="headerlink" title="20.Spring中的事务传播属性有哪些？"></a>20.Spring中的事务传播属性有哪些？</h3><p>Spring中的事务传播属性主要有以下几种：</p>
+<p>1）PROPAGATION_REQUIRED：如果当前存在事务，则加入该事务；如果不存在事务，则创建一个新的事务。</p>
+<p>2）PROPAGATION_SUPPORTS：如果当前存在事务，则加入该事务；如果不存在事务，则不开启事务。</p>
+<p>3）PROPAGATION_MANDATORY：如果当前存在事务，则加入该事务；如果不存在事务，则抛出异常。</p>
+<p>4）PROPAGATION_REQUIRES_NEW：无论是否存在事务，都创建一个新的事务并进行执行。</p>
+]]></content>
+      <categories>
+        <category>面试宝典</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 并发编程（二）</title>
+    <url>/java/java-concurrent-programming2/</url>
+    <content><![CDATA[<h3 id="1、并发编程三要素？"><a href="#1、并发编程三要素？" class="headerlink" title="1、并发编程三要素？"></a>1、并发编程三要素？</h3><p><strong>1、原子性</strong><br>原子性指的是一个或者多个操作，要么全部执行并且在执行的过程中不被其他操作打断，要么就全部都不执行。<br><strong>2、可见性</strong><br>可见性指多个线程操作一个共享变量时，其中一个线程对变量进行修改后，其他线程可以立即看到修改的结果。<br><strong>3、有序性</strong><br>有序性，即程序的执行顺序按照代码的先后顺序来执行。</p>
+<h3 id="2、实现可见性的方法有哪些？"><a href="#2、实现可见性的方法有哪些？" class="headerlink" title="2、实现可见性的方法有哪些？"></a>2、实现可见性的方法有哪些？</h3><p>synchronized 或者 Lock：保证同一个时刻只有一个线程获取锁执行代码，锁释放之前把最新的值刷新到主内存，实现可见性。  </p>
+<h3 id="3、多线程的价值？"><a href="#3、多线程的价值？" class="headerlink" title="3、多线程的价值？"></a>3、多线程的价值？</h3><p>1、发挥多核 CPU 的优势</p>
+<p>多线程，可以真正发挥出多核 CPU 的优势来，达到充分利用 CPU 的目的，采用多线程的方式去同时完成几件事情而不互相干扰。<br>2、防止阻塞<br>从程序运行效率的角度来看，单核 CPU 不但不会发挥出多线程的优势，反而会因为在单核 CPU 上运行多线程导致线程上下文的切换，而降低程序整体的效率。但<br>是单核 CPU 我们还是要应用多线程，就是为了防止阻塞。试想，如果单核 CPU 使用单线程，那么只要这个线程阻塞了，比方说远程读取某个数据吧，对端迟迟未返回又没有设置超时时间，那么你的整个程序在数据返回回来之前就停止运行了。</p>
+<p>多线程可以防止这个问题，多条线程同时运行，哪怕一条线程的代码执行读取数据阻塞，也不会影响其它任务的执行。<br>3、便于建模<br>这是另外一个没有这么明显的优点了。假设有一个大的任务 A，单线程编程，那么就要考虑很多，建立整个程序模型比较麻烦。但是如果把这个大的任务 A 分解成几个小任务，任务 B、任务 C、任务 D，分别建立程序模型，并通过多线程分别运行这几个任务，那就简单很多了。</p>
+<h3 id="4、创建线程的有哪些方式？"><a href="#4、创建线程的有哪些方式？" class="headerlink" title="4、创建线程的有哪些方式？"></a>4、创建线程的有哪些方式？</h3><p>1、继承 Thread 类创建线程类<br>2、通过 Runnable 接口创建线程类<br>3、通过 Callable 和 Future 创建线程<br>4、通过线程池创建  </p>
+<h3 id="5、创建线程的三种方式的对比？"><a href="#5、创建线程的三种方式的对比？" class="headerlink" title="5、创建线程的三种方式的对比？"></a>5、创建线程的三种方式的对比？</h3><p>1、采用实现 Runnable、Callable 接口的方式创建多线程。<br>优势是：<br>线程类只是实现了 Runnable 接口或 Callable 接口，还可以继承其他类。<br>在这种方式下，多个线程可以共享同一个 target 对象，所以非常适合多个相同线程来处理同一份资源的情况，从而可以将 CPU、代码和数据分开，形成清晰的模型，较好地体现了面向对象的思想。<br>劣势是：<br>编程稍微复杂，如果要访问当前线程，则必须使用 Thread.currentThread()方法。<br>2、使用继承 Thread 类的方式创建多线程<br>优势是：<br>编写简单，如果需要访问当前线程，则无需使用 Thread.currentThread()方法，直接使用 this 即可获得当前线程。<br>劣势是：<br>线程类已经继承了 Thread 类，所以不能再继承其他父类。<br>3、Runnable 和 Callable 的区别<br>1、Callable 规定（重写）的方法是 call()，Runnable 规定（重写）的方法是 run()。<br>2、Callable 的任务执行后可返回值，而 Runnable 的任务是不能返回值的。<br>3、Call 方法可以抛出异常，run 方法不可以。<br>4、运行 Callable 任务可以拿到一个 Future 对象，表示异步计算的结果。它提供<br>了检查计算是否完成的方法，以等待计算的完成，并检索计算的结果。通过 Future<br>对象可以了解任务执行情况，可取消任务的执行，还可获取执行结果。</p>
+<h3 id="6、线程的状态流转图"><a href="#6、线程的状态流转图" class="headerlink" title="6、线程的状态流转图"></a>6、线程的状态流转图</h3><p>线程的生命周期及五种基本状态：</p>
+<ol>
+<li>初始状态</li>
+</ol>
+<p>实现Runnable接口和继承Thread可以得到一个线程类，new一个实例出来，线程就进入了初始状态。</p>
+<ol start="2">
+<li><p>就绪状态</p>
+</li>
+<li><p>就绪状态只是说你资格运行，调度程序没有挑选到你，你就永远是就绪状态。</p>
+</li>
+<li><p>调用线程的start()方法，此线程进入就绪状态。</p>
+</li>
+<li><p>当前线程sleep()方法结束，其他线程join()结束，等待用户输入完毕，某个线程拿到对象锁，这些线程也将进入就绪状态。</p>
+</li>
+<li><p>当前线程时间片用完了，调用当前线程的yield()方法，当前线程进入就绪状态。</p>
+</li>
+<li><p>锁池里的线程拿到对象锁后，进入就绪状态。</p>
+</li>
+<li><p>运行中状态</p>
+</li>
+</ol>
+<p>线程调度程序从可运行池中选择一个线程作为当前线程时线程所处的状态。这也是线程进入运行状态的唯一一种方式。</p>
+<ol start="3">
+<li>阻塞状态</li>
+</ol>
+<p>阻塞状态是线程阻塞在进入synchronized关键字修饰的方法或代码块(获取锁)时的状态。</p>
+<ol start="4">
+<li>等待</li>
+</ol>
+<p>处于这种状态的线程不会被分配CPU执行时间，它们要等待被显式地唤醒，否则会处于无限期等待的状态。</p>
+<ol start="5">
+<li>超时等待</li>
+</ol>
+<p>处于这种状态的线程不会被分配CPU执行时间，不过无须无限期等待被其他线程显示地唤醒，在达到一定时间后它们会自动唤醒。</p>
+<ol start="6">
+<li><p>终止状态</p>
+</li>
+<li><p>当线程的run()方法完成时，或者主线程的main()方法完成时，我们就认为它终止了。这个线程对象也许是活的，但是，它已经不是一个单独执行的线程。线程一旦终止了，就不能复生。</p>
+</li>
+<li><p>在一个终止的线程上调用start()方法，会抛出java.lang.IllegalThreadStateException异常。</p>
+</li>
+<li><p>等待队列</p>
+</li>
+</ol>
+<ul>
+<li>调用obj的wait(), notify()方法前，必须获得obj锁，也就是必须写在synchronized(obj) 代码段内。</li>
+<li>当调用Object.wait()进入等待队列</li>
+</ul>
+<ol start="8">
+<li>状态流转</li>
+</ol>
+<p><img src="/images/java/24105101_637edc150deb784364.png" alt="线程的状态流转图"></p>
+<h3 id="7、Java-线程具有五中基本状态"><a href="#7、Java-线程具有五中基本状态" class="headerlink" title="7、Java 线程具有五中基本状态"></a>7、Java 线程具有五中基本状态</h3><p>1、新建状态（New）：当线程对象对创建后，即进入了新建状态，如：Thread t &#x3D; new MyThread()；<br>2、就绪状态（Runnable）：当调用线程对象的 start()方法（t.start();），线程即进入就绪状态。处于就绪状态的线程，只是说明此线程已经做好了准备，随时等待 CPU 调度执行，并不是说执行了 t.start()此线程立即就会执行；<br>3、运行状态（Running）：当 CPU 开始调度处于就绪状态的线程时，此时线程才得以真正执行，即进入到运行状态。注：就 绪状态是进入到运行状态的唯一入口，也就是说，线程要想进入运行状态执行，首先必须处于就绪状态中；<br>4、阻塞状态（Blocked）：处于运行状态中的线程由于某种原因，暂时放弃对 CPU的使用权，停止执行，此时进入阻塞状态，直到其进入到就绪状态，才 有机会再次被 CPU 调用以进入到运行状态。<br><strong>根据阻塞产生的原因不同，阻塞状态又可以分为三种：</strong><br>1、等待阻塞：运行状态中的线程执行 wait()方法，使本线程进入到等待阻塞状态；<br>2、同步阻塞：线程在获取 synchronized 同步锁失败(因为锁被其它线程所占用)，<br>它会进入同步阻塞状态；<br>3、其他阻塞：通过调用线程的 sleep()或 join()或发出了 I&#x2F;O 请求时，线程会进入<br>到阻塞状态。当 sleep()状态超时、join()等待线程终止或者超时、或者 I&#x2F;O 处理<br>完毕时，线程重新转入就绪状态。<br>5、死亡状态（Dead）：线程执行完了或者因异常退出了 run()方法，该线程结束<br>生命周期。  </p>
+<h3 id="8、什么是线程池？有哪几种创建方式？"><a href="#8、什么是线程池？有哪几种创建方式？" class="headerlink" title="8、什么是线程池？有哪几种创建方式？"></a>8、什么是线程池？有哪几种创建方式？</h3><p>线程池就是提前创建若干个线程，如果有任务需要处理，线程池里的线程就会处理任务，处理完之后线程并不会被销毁，而是等待下一个任务。由于创建和销毁<br>线程都是消耗系统资源的，所以当你想要频繁的创建和销毁线程的时候就可以考虑使用线程池来提升系统的性能。<br>java 提供了一个 java.util.concurrent.Executor 接口的实现用于创建线程池。  </p>
+<h3 id="9、四种线程池的创建："><a href="#9、四种线程池的创建：" class="headerlink" title="9、四种线程池的创建："></a>9、四种线程池的创建：</h3><p>1、newCachedThreadPool 创建一个可缓存线程池<br>2、newFixedThreadPool 创建一个定长线程池，可控制线程最大并发数。<br>3、newScheduledThreadPool 创建一个定长线程池，支持定时及周期性任务执行。<br>4、newSingleThreadExecutor 创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务。</p>
+<h3 id="10、线程池的优点？"><a href="#10、线程池的优点？" class="headerlink" title="10、线程池的优点？"></a>10、线程池的优点？</h3><p>1、重用存在的线程，减少对象创建销毁的开销。<br>2、可有效的控制最大并发线程数，提高系统资源的使用率，同时避免过多资源竞争，避免堵塞。<br>3、提供定时执行、定期执行、单线程、并发数控制等功能。</p>
+<h3 id="11、常用的并发工具类有哪些？"><a href="#11、常用的并发工具类有哪些？" class="headerlink" title="11、常用的并发工具类有哪些？"></a>11、常用的并发工具类有哪些？</h3><p>1、CountDownLatch<br>2、CyclicBarrier<br>3、Semaphore<br>4、Exchanger</p>
+<h3 id="12、CyclicBarrier-和-CountDownLatch-的区别"><a href="#12、CyclicBarrier-和-CountDownLatch-的区别" class="headerlink" title="12、CyclicBarrier 和 CountDownLatch 的区别"></a>12、CyclicBarrier 和 CountDownLatch 的区别</h3><p>1、CountDownLatch 简单的说就是一个线程等待，直到他所等待的其他线程都执行完成并且调用 countDown()方法发出通知后，当前线程才可以继续执行。<br>2、cyclicBarrier 是所有线程都进行等待，直到所有线程都准备好进入 await()方法之后，所有线程同时开始执行！<br>3、CountDownLatch 的计数器只能使用一次。而 CyclicBarrier 的计数器可以使用 reset() 方法重置。所以 CyclicBarrier 能处理更为复杂的业务场景，比如如果<br>计算发生错误，可以重置计数器，并让线程们重新执行一次。<br>4、CyclicBarrier 还提供其他有用的方法，比如 getNumberWaiting 方法可以获得 CyclicBarrier 阻塞的线程数量。isBroken 方法用来知道阻塞的线程是否被中断。如果被中断返回 true，否则返回 false。</p>
+<h3 id="13、synchronized-的作用？"><a href="#13、synchronized-的作用？" class="headerlink" title="13、synchronized 的作用？"></a>13、synchronized 的作用？</h3><p>在 Java 中，synchronized 关键字是用来控制线程同步的，就是在多线程的环境下，控制 synchronized 代码段不被多个线程同时执行。<br>synchronized 既可以加在一段代码上，也可以加在方法上。</p>
+<h3 id="14、volatile-关键字的作用"><a href="#14、volatile-关键字的作用" class="headerlink" title="14、volatile 关键字的作用"></a>14、volatile 关键字的作用</h3><p>对于可见性，Java 提供了 volatile 关键字来保证可见性。<br>当一个共享变量被 volatile 修饰时，它会保证修改的值会立即被更新到主存，当有其他线程需要读取时，它会去内存中读取新值。<br>从实践角度而言，volatile 的一个重要作用就是和 CAS 结合，保证了原子性，详细的可以参见 java.util.concurrent.atomic 包下的类，比如 AtomicInteger。</p>
+<h3 id="15、什么是-CAS"><a href="#15、什么是-CAS" class="headerlink" title="15、什么是 CAS"></a>15、什么是 CAS</h3><p>CAS 是 compare and swap 的缩写，即我们所说的比较交换。<br>cas 是一种基于锁的操作，而且是乐观锁。在 java 中锁分为乐观锁和悲观锁。悲观锁是将资源锁住，等一个之前获得锁的线程释放锁之后，下一个线程才可以访问。而乐观锁采取了一种宽泛的态度，通过某种方式不加锁来处理资源，比如通过给记录加 version 来获取数据，性能较悲观锁有很大的提高。<br>CAS 操作包含三个操作数 —— 内存位置（V）、预期原值（A）和新值(B)。如果内存地址里面的值和 A 的值是一样的，那么就将内存里面的值更新成 B。CAS是通过无限循环来获取数据的，若果在第一轮循环中，a 线程获取地址里面的值被b 线程修改了，那么 a 线程需要自旋，到下次循环才有可能机会执行。<br>java.util.concurrent.atomic 包下的类大多是使用 CAS 操作来实现的( AtomicInteger,AtomicBoolean,AtomicLong)。</p>
+<h3 id="16、CAS-的问题"><a href="#16、CAS-的问题" class="headerlink" title="16、CAS 的问题"></a>16、CAS 的问题</h3><p>1、CAS 容易造成 ABA 问题<br>一个线程 a 将数值改成了 b，接着又改成了 a，此时 CAS 认为是没有变化，其实是已经变化过了，而这个问题的解决方案可以使用版本号标识，每操作一次version 加 1。在 java5 中，已经提供了 AtomicStampedReference 来解决问题。<br>2、不能保证代码块的原子性<br>CAS 机制所保证的知识一个变量的原子性操作，而不能保证整个代码块的原子性。比如需要保证 3 个变量共同进行原子性的更新，就不得不使用 synchronized 了。<br>3、CAS 造成 CPU 利用率增加<br>之前说过了 CAS 里面是一个循环判断的过程，如果线程一直没有获取到状态，cpu资源会一直被占用。</p>
+<h3 id="17、什么是-Future？"><a href="#17、什么是-Future？" class="headerlink" title="17、什么是 Future？"></a>17、什么是 Future？</h3><p>在并发编程中，我们经常用到非阻塞的模型，在之前的多线程的三种实现中，不管是继承 thread 类还是实现 runnable 接口，都无法保证获取到之前的执行结果。<br>通过实现 Callback 接口，并用 Future 可以来接收多线程的执行结果。<br>Future 表示一个可能还没有完成的异步任务的结果，针对这个结果可以添加Callback 以便在任务执行成功或失败后作出相应的操作。</p>
+<h3 id="18、什么是-AQS"><a href="#18、什么是-AQS" class="headerlink" title="18、什么是 AQS"></a>18、什么是 AQS</h3><p>AQS 是 AbustactQueuedSynchronizer 的简称，它是一个 Java 提高的底层同步工具类，用一个 int 类型的变量表示同步状态，并提供了一系列的 CAS 操作来管理这个同步状态。<br>AQS 是一个用来构建锁和同步器的框架，使用 AQS 能简单且高效地构造出应用广泛的大量的同步器，比如我们提到的 ReentrantLock，Semaphore，其他的诸如ReentrantReadWriteLock，SynchronousQueue，FutureTask 等等皆是基于AQS 的。</p>
+<h3 id="19、AQS-支持两种同步方式："><a href="#19、AQS-支持两种同步方式：" class="headerlink" title="19、AQS 支持两种同步方式："></a>19、AQS 支持两种同步方式：</h3><p>1、独占式<br>2、共享式<br>这样方便使用者实现不同类型的同步组件，独占式如 ReentrantLock，共享式如Semaphore，CountDownLatch，组合式的如 ReentrantReadWriteLock。总之，AQS 为使用提供了底层支撑，如何组装实现，使用者可以自由发挥。</p>
+<h3 id="20、ReadWriteLock-是什么"><a href="#20、ReadWriteLock-是什么" class="headerlink" title="20、ReadWriteLock 是什么"></a>20、ReadWriteLock 是什么</h3><p>首先明确一下，不是说 ReentrantLock 不好，只是 ReentrantLock 某些时候有局限。如果使用 ReentrantLock，可能本身是为了防止线程 A 在写数据、线程 B 在读数据造成的数据不一致，但这样，如果线程 C 在读数据、线程 D 也在读数据，读数据是不会改变数据的，没有必要加锁，但是还是加锁了，降低了程序的性能。<br>因为这个，才诞生了读写锁 ReadWriteLock。ReadWriteLock 是一个读写锁接口，ReentrantReadWriteLock 是 ReadWriteLock 接口的一个具体实现，实现了读写的分离，读锁是共享的，写锁是独占的，读和读之间不会互斥，读和写、写和读、写和写之间才会互斥，提升了读写的性能。</p>
+<h3 id="21、FutureTask-是什么"><a href="#21、FutureTask-是什么" class="headerlink" title="21、FutureTask 是什么"></a>21、FutureTask 是什么</h3><p>这个其实前面有提到过，FutureTask 表示一个异步运算的任务。FutureTask 里面可以传入一个 Callable 的具体实现类，可以对这个异步运算的任务的结果进行等待获取、判断是否已经完成、取消任务等操作。当然，由于 FutureTask 也是Runnable 接口的实现类，所以 FutureTask 也可以放入线程池中。  </p>
+<h3 id="22、synchronized-和-ReentrantLock-的区别"><a href="#22、synchronized-和-ReentrantLock-的区别" class="headerlink" title="22、synchronized 和 ReentrantLock 的区别"></a>22、synchronized 和 ReentrantLock 的区别</h3><p>synchronized 是和 if、else、for、while 一样的关键字，ReentrantLock 是类，这是二者的本质区别。既然 ReentrantLock 是类，那么它就提供了比synchronized 更多更灵活的特性，可以被继承、可以有方法、可以有各种各样的类变量，ReentrantLock 比 synchronized 的扩展性体现在几点上：<br>1、ReentrantLock 可以对获取锁的等待时间进行设置，这样就避免了死锁<br>2、ReentrantLock 可以获取各种锁的信息<br>3、ReentrantLock 可以灵活地实现多路通知<br>另外，二者的锁机制其实也是不一样的。ReentrantLock 底层调用的是 Unsafe 的park 方法加锁，synchronized 操作的应该是对象头中 mark word，这点我不能确定。</p>
+<h3 id="23、什么是乐观锁和悲观锁"><a href="#23、什么是乐观锁和悲观锁" class="headerlink" title="23、什么是乐观锁和悲观锁"></a>23、什么是乐观锁和悲观锁</h3><p>1、乐观锁：就像它的名字一样，对于并发间操作产生的线程安全问题持乐观状态，乐观锁认为竞争不总是会发生，因此它不需要持有锁，将比较-替换这两个动作作为一个原子操作尝试去修改内存中的变量，如果失败则表示发生冲突，那么就应该有相应的重试逻辑。<br>2、悲观锁：还是像它的名字一样，对于并发间操作产生的线程安全问题持悲观状态，悲观锁认为竞争总是会发生，因此每次对某资源进行操作时，都会持有一个<br>独占的锁，就像 synchronized，不管三七二十一，直接上了锁就操作资源了。</p>
+<h3 id="24、线程-B-怎么知道线程-A-修改了变量"><a href="#24、线程-B-怎么知道线程-A-修改了变量" class="headerlink" title="24、线程 B 怎么知道线程 A 修改了变量"></a>24、线程 B 怎么知道线程 A 修改了变量</h3><p>1、volatile 修饰变量<br>2、synchronized 修饰修改变量的方法<br>3、wait&#x2F;notify<br>4、while 轮询</p>
+<h3 id="25、synchronized、volatile、CAS-比较"><a href="#25、synchronized、volatile、CAS-比较" class="headerlink" title="25、synchronized、volatile、CAS 比较"></a>25、synchronized、volatile、CAS 比较</h3><p>1、synchronized 是悲观锁，属于抢占式，会引起其他线程阻塞。<br>2、volatile 提供多线程共享变量可见性和禁止指令重排序优化。<br>3、CAS 是基于冲突检测的乐观锁（非阻塞）</p>
+<h3 id="26、sleep-方法和-wait-方法有什么区别"><a href="#26、sleep-方法和-wait-方法有什么区别" class="headerlink" title="26、sleep 方法和 wait 方法有什么区别?"></a>26、sleep 方法和 wait 方法有什么区别?</h3><p>这个问题常问，sleep 方法和 wait 方法都可以用来放弃 CPU 一定的时间，不同点在于如果线程持有某个对象的监视器，sleep 方法不会放弃这个对象的监视器，<br>wait 方法会放弃这个对象的监视器</p>
+<h3 id="27、ThreadLocal-是什么？有什么用？"><a href="#27、ThreadLocal-是什么？有什么用？" class="headerlink" title="27、ThreadLocal 是什么？有什么用？"></a>27、ThreadLocal 是什么？有什么用？</h3><p>ThreadLocal 是一个本地线程副本变量工具类。主要用于将私有线程和该线程存放的副本对象做一个映射，各个线程之间的变量互不干扰，在高并发场景下，可<br>以实现无状态的调用，特别适用于各个线程依赖不通的变量值完成操作的场景。<br>简单说 ThreadLocal 就是一种以空间换时间的做法，在每个 Thread 里面维护了一个以开地址法实现的 ThreadLocal.ThreadLocalMap，把数据进行隔离，数据<br>不共享，自然就没有线程安全方面的问题了。</p>
+<h3 id="28、为什么-wait-方法和-notify-x2F-notifyAll-方法要在同步块中被调用"><a href="#28、为什么-wait-方法和-notify-x2F-notifyAll-方法要在同步块中被调用" class="headerlink" title="28、为什么 wait()方法和 notify()&#x2F;notifyAll()方法要在同步块中被调用"></a>28、为什么 wait()方法和 notify()&#x2F;notifyAll()方法要在同步块中被调用</h3><p>这是 JDK 强制的，wait()方法和 notify()&#x2F;notifyAll()方法在调用前都必须先获得对象的锁</p>
+<h3 id="29、多线程同步有哪几种方法？"><a href="#29、多线程同步有哪几种方法？" class="headerlink" title="29、多线程同步有哪几种方法？"></a>29、多线程同步有哪几种方法？</h3><p>Synchronized 关键字，Lock 锁实现，分布式锁等。</p>
+<h3 id="30、线程的调度策略"><a href="#30、线程的调度策略" class="headerlink" title="30、线程的调度策略"></a>30、线程的调度策略</h3><p>线程调度器选择优先级最高的线程运行，但是，如果发生以下情况，就会终止线程的运行：<br>1、线程体中调用了 yield 方法让出了对 cpu 的占用权利<br>2、线程体中调用了 sleep 方法使线程进入睡眠状态<br>3、线程由于 IO 操作受到阻塞<br>4、另外一个更高优先级线程出现<br>5、在支持时间片的系统中，该线程的时间片用完</p>
+<h3 id="31、ConcurrentHashMap-的并发度是什么"><a href="#31、ConcurrentHashMap-的并发度是什么" class="headerlink" title="31、ConcurrentHashMap 的并发度是什么"></a>31、ConcurrentHashMap 的并发度是什么</h3><p>ConcurrentHashMap 的并发度就是 segment 的大小，默认为 16，这意味着最多同时可以有 16 条线程操作 ConcurrentHashMap，这也是<br>ConcurrentHashMap 对 Hashtable 的最大优势，任何情况下，Hashtable 能同时有两条线程获取 Hashtable 中的数据吗？</p>
+<h3 id="32、Linux-环境下如何查找哪个线程使用-CPU-最长"><a href="#32、Linux-环境下如何查找哪个线程使用-CPU-最长" class="headerlink" title="32、Linux 环境下如何查找哪个线程使用 CPU 最长"></a>32、Linux 环境下如何查找哪个线程使用 CPU 最长</h3><p>1、获取项目的 pid，jps 或者 ps -ef | grep java，这个前面有讲过<br>2、top -H -p pid，顺序不能改变</p>
+<h3 id="33、Java-死锁以及如何避免？"><a href="#33、Java-死锁以及如何避免？" class="headerlink" title="33、Java 死锁以及如何避免？"></a>33、Java 死锁以及如何避免？</h3><p>Java 中的死锁是一种编程情况，其中两个或多个线程被永久阻塞，Java 死锁情况<br>出现至少两个线程和两个或更多资源。<br>Java 发生死锁的根本原因是：在申请锁时发生了交叉闭环申请。</p>
+<h3 id="34、死锁的原因"><a href="#34、死锁的原因" class="headerlink" title="34、死锁的原因"></a>34、死锁的原因</h3><p>1、是多个线程涉及到多个锁，这些锁存在着交叉，所以可能会导致了一个锁依赖的闭环。<br>例如：线程在获得了锁 A 并且没有释放的情况下去申请锁 B，这时，另一个线程已经获得了锁 B，在释放锁 B 之前又要先获得锁 A，因此闭环发生，陷入死锁循。<br>2、默认的锁申请操作是阻塞的。<br>所以要避免死锁，就要在一遇到多个对象锁交叉的情况，就要仔细审查这几个对象的类中的所有方法，是否存在着导致锁依赖的环路的可能性。总之是尽量避免在一个同步方法中调用其它对象的延时方法和同步方法。  </p>
+<h3 id="35、怎么唤醒一个阻塞的线程"><a href="#35、怎么唤醒一个阻塞的线程" class="headerlink" title="35、怎么唤醒一个阻塞的线程"></a>35、怎么唤醒一个阻塞的线程</h3><p>如果线程是因为调用了 wait()、sleep()或者 join()方法而导致的阻塞，可以中断线程，并且通过抛出 InterruptedException 来唤醒它；如果线程遇到了 IO 阻塞，无能为力，因为 IO 是操作系统实现的，Java 代码并没有办法直接接触到操作系统。</p>
+<h3 id="36、不可变对象对多线程有什么帮助"><a href="#36、不可变对象对多线程有什么帮助" class="headerlink" title="36、不可变对象对多线程有什么帮助"></a>36、不可变对象对多线程有什么帮助</h3><p>前面有提到过的一个问题，不可变对象保证了对象的内存可见性，对不可变对象的读取不需要进行额外的同步手段，提升了代码执行效率。</p>
+<h3 id="37、什么是多线程的上下文切换"><a href="#37、什么是多线程的上下文切换" class="headerlink" title="37、什么是多线程的上下文切换"></a>37、什么是多线程的上下文切换</h3><p>多线程的上下文切换是指 CPU 控制权由一个已经正在运行的线程切换到另外一个就绪并等待获取 CPU 执行权的线程的过程。</p>
+<h3 id="38、如果你提交任务时，线程池队列已满，这时会发生什么"><a href="#38、如果你提交任务时，线程池队列已满，这时会发生什么" class="headerlink" title="38、如果你提交任务时，线程池队列已满，这时会发生什么"></a>38、如果你提交任务时，线程池队列已满，这时会发生什么</h3><p>这里区分一下：<br>1、如果使用的是无界队列 LinkedBlockingQueue，也就是无界队列的话，没关系，继续添加任务到阻塞队列中等待执行，因为 LinkedBlockingQueue 可以近乎<br>认为是一个无穷大的队列，可以无限存放任务</p>
+<p>2、如果使用的是有界队列比如 ArrayBlockingQueue，任务首先会被添加到ArrayBlockingQueue 中，ArrayBlockingQueue 满了，会根据maximumPoolSize 的值增加线程数量，如果增加了线程数量还是处理不过来，ArrayBlockingQueue 继续满，那么则会使用拒绝策略, RejectedExecutionHandler 处理满了的任务，默认是 AbortPolicy</p>
+<h3 id="39、Java-中用到的线程调度算法是什么"><a href="#39、Java-中用到的线程调度算法是什么" class="headerlink" title="39、Java 中用到的线程调度算法是什么"></a>39、Java 中用到的线程调度算法是什么</h3><p>抢占式。一个线程用完 CPU 之后，操作系统会根据线程优先级、线程饥饿情况等数据算出一个总的优先级并分配下一个时间片给某个线程执行。</p>
+<h3 id="40、什么是线程调度器-Thread-Scheduler-和时间分片-TimeSlicing-？"><a href="#40、什么是线程调度器-Thread-Scheduler-和时间分片-TimeSlicing-？" class="headerlink" title="40、什么是线程调度器(Thread Scheduler)和时间分片(TimeSlicing)？"></a>40、什么是线程调度器(Thread Scheduler)和时间分片(TimeSlicing)？</h3><p>线程调度器是一个操作系统服务，它负责为 Runnable 状态的线程分配 CPU 时间。<br>一旦我们创建一个线程并启动它，它的执行便依赖于线程调度器的实现。时间分片是指将可用的 CPU 时间分配给可用的 Runnable 线程的过程。分配 CPU 时间可<br>以基于线程优先级或者线程等待的时间。线程调度并不受到 Java 虚拟机控制，所以由应用程序来控制它是更好的选择（也就是说不要让你的程序依赖于线程的优<br>先级）。</p>
+<h3 id="41、什么是自旋"><a href="#41、什么是自旋" class="headerlink" title="41、什么是自旋"></a>41、什么是自旋</h3><p>很多 synchronized 里面的代码只是一些很简单的代码，执行时间非常快，此时等待的线程都加锁可能是一种不太值得的操作，因为线程阻塞涉及到用户态和内核<br>态切换的问题。既然 synchronized 里面的代码执行得非常快，不妨让等待锁的线程不要被阻塞，而是在 synchronized 的边界做忙循环，这就是自旋。如果做了多次忙循环发现还没有获得锁，再阻塞，这样可能是一种更好的策略。</p>
+<h3 id="42、Java-Concurrency-API-中的-Lock-接口-Lock-interface-是什么？对比同步它有什么优势？"><a href="#42、Java-Concurrency-API-中的-Lock-接口-Lock-interface-是什么？对比同步它有什么优势？" class="headerlink" title="42、Java Concurrency API 中的 Lock 接口(Lock interface)是什么？对比同步它有什么优势？"></a>42、Java Concurrency API 中的 Lock 接口(Lock interface)是什么？对比同步它有什么优势？</h3><p>Lock 接口比同步方法和同步块提供了更具扩展性的锁操作。他们允许更灵活的结构，可以具有完全不同的性质，并且可以支持多个相关类的条件对象。<br>它的优势有：<br>1、可以使锁更公平<br>2、可以使线程在等待锁的时候响应中断<br>3、可以让线程尝试获取锁，并在无法获取锁的时候立即返回或者等待一段时间<br>4、可以在不同的范围，以不同的顺序获取和释放锁</p>
+<h3 id="43、单例模式的线程安全性"><a href="#43、单例模式的线程安全性" class="headerlink" title="43、单例模式的线程安全性"></a>43、单例模式的线程安全性</h3><p>老生常谈的问题了，首先要说的是单例模式的线程安全意味着：某个类的实例在多线程环境下只会被创建一次出来。单例模式有很多种的写法，我总结一下：<br>1、饿汉式单例模式的写法：线程安全<br>2、懒汉式单例模式的写法：非线程安全<br>3、双检锁单例模式的写法：线程安全</p>
+<h3 id="44、Semaphore-有什么作用"><a href="#44、Semaphore-有什么作用" class="headerlink" title="44、Semaphore 有什么作用"></a>44、Semaphore 有什么作用</h3><p>Semaphore 就是一个信号量，它的作用是限制某段代码块的并发数。Semaphore有一个构造函数，可以传入一个 int 型整数 n，表示某段代码最多只有 n 个线程可以访问，如果超出了 n，那么请等待，等到某个线程执行完毕这段代码块，下一个线程再进入。由此可以看出如果 Semaphore 构造函数中传入的 int 型整数 n&#x3D;1，相当于变成了一个 synchronized 了。</p>
+<h3 id="45、Executors-类是什么？"><a href="#45、Executors-类是什么？" class="headerlink" title="45、Executors 类是什么？"></a>45、Executors 类是什么？</h3><p>Executors 为 Executor，ExecutorService，ScheduledExecutorService，ThreadFactory 和 Callable 类提供了一些工具方法。<br>Executors 可以用于方便的创建线程池</p>
+<h3 id="46、线程类的构造方法、静态块是被哪个线程调用的"><a href="#46、线程类的构造方法、静态块是被哪个线程调用的" class="headerlink" title="46、线程类的构造方法、静态块是被哪个线程调用的"></a>46、线程类的构造方法、静态块是被哪个线程调用的</h3><p>这是一个非常刁钻和狡猾的问题。请记住：线程类的构造方法、静态块是被 new这个线程类所在的线程所调用的，而 run 方法里面的代码才是被线程自身所调用的。<br>如果说上面的说法让你感到困惑，那么我举个例子，假设 Thread2 中 new 了Thread1，main 函数中 new 了 Thread2，那么：<br>1、Thread2 的构造方法、静态块是 main 线程调用的，Thread2 的 run()方法是Thread2 自己调用的<br>2、Thread1 的构造方法、静态块是 Thread2 调用的，Thread1 的 run()方法是Thread1 自己调用的</p>
+<h3 id="47、同步方法和同步块，哪个是更好的选择"><a href="#47、同步方法和同步块，哪个是更好的选择" class="headerlink" title="47、同步方法和同步块，哪个是更好的选择?"></a>47、同步方法和同步块，哪个是更好的选择?</h3><p>同步块，这意味着同步块之外的代码是异步执行的，这比同步整个方法更提升代码的效率。请知道一条原则：同步的范围越小越好。</p>
+<h3 id="48、Java-线程数过多会造成什么异常？"><a href="#48、Java-线程数过多会造成什么异常？" class="headerlink" title="48、Java 线程数过多会造成什么异常？"></a>48、Java 线程数过多会造成什么异常？</h3><p>1、线程的生命周期开销非常高<br>2、消耗过多的 CPU 资源<br>如果可运行的线程数量多于可用处理器的数量，那么有线程将会被闲置。大量空闲的线程会占用许多内存，给垃圾回收器带来压力，而且大量的线程在竞争 CPU<br>资源时还将产生其他性能的开销。<br>3、降低稳定性<br>JVM 在可创建线程的数量上存在一个限制，这个限制值将随着平台的不同而不同，并且承受着多个因素制约，包括 JVM 的启动参数、Thread 构造函数中请求栈的大小，以及底层操作系统对线程的限制等。如果破坏了这些限制，那么可能抛出OutOfMemoryError 异常。  </p>
+]]></content>
+      <categories>
+        <category>面试宝典</category>
+      </categories>
+      <tags>
+        <tag>JUC</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring面试题总结（一）</title>
+    <url>/spring/spring/</url>
+    <content><![CDATA[<h3 id="1、谈谈你对Spring的理解？"><a href="#1、谈谈你对Spring的理解？" class="headerlink" title="1、谈谈你对Spring的理解？"></a>1、谈谈你对Spring的理解？</h3><p><strong>一个轻量级的IOC和AOP容器框架</strong>，是为Java应用程序提供基础性服务的一套框架。</p>
+<p>目的是用于简化企业级应用程序的开发，使开发者<strong>只需要关心业务需求</strong>。</p>
+<ul>
+<li>常见的三种配置方式：</li>
+<li><ul>
+<li>基于XML的配置；</li>
+<li>基于注解的配置；</li>
+<li>基于Java的配置。</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-1-发展历程"><a href="#1-1-发展历程" class="headerlink" title="1.1 发展历程"></a>1.1 发展历程</h4><p><img src="/%5Cimages%5Cspring%5Cspring1.png" alt="Spring面试题总结"></p>
+<h4 id="1-2-Spirng的组成"><a href="#1-2-Spirng的组成" class="headerlink" title="1.2 Spirng的组成"></a>1.2 Spirng的组成</h4><p>Spring Core：核心类库，提供IOC服务；</p>
+<p>Spring Context：提供框架式的Bean访问方式，以及企业级功能（JNDL、定时任务等）；</p>
+<p>Spring AOP：AOP服务；</p>
+<p>Spring DAO：对JDBC的抽象，简化了数据访问异常的处理；</p>
+<p>Sping ORM：对现有的ORM框架的支持；</p>
+<p>Spring Web：提供了基本的面向Web的综合特性，例如多方文件上传；</p>
+<p>Spring MVC：提供面向Web应用的Model-View-Controller实现。<br><img src="/%5Cimages%5Cspring%5Cspring2.png" alt="在这里插入图片描述"></p>
+<h4 id="1-3-Spring的好处"><a href="#1-3-Spring的好处" class="headerlink" title="1.3 Spring的好处"></a>1.3 Spring的好处</h4>]]></content>
+      <categories>
+        <category>面试宝典</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySQL面试题</title>
+    <url>/mysql/mysql/</url>
+    <content><![CDATA[<h3 id="1、MySQL-中有哪几种锁？"><a href="#1、MySQL-中有哪几种锁？" class="headerlink" title="1、MySQL 中有哪几种锁？"></a>1、MySQL 中有哪几种锁？</h3><ol>
+<li>共享锁（Shared Lock）：也称为读锁（Read Lock），允许多个事务同时持有共享锁，且不互斥。共享锁适用于读操作，不阻塞其他事务的读操作。</li>
+<li>排他锁（Exclusive Lock）：也称为写锁（Write Lock），排他锁在事务对表进行更新、删除等写操作时使用。排他锁只允许一个事务持有，其他事务不能同时持有共享锁或排他锁。</li>
+<li>表级锁（Table-level Lock）：开销小，加锁快；不会出现死锁；锁定粒度大，发生锁冲突的概率最高，并发度最低。表级锁是对整张表进行锁定，可以分为两种类型：共享锁和排他锁。</li>
+<li>行级锁（Row-level Lock）：开销大，加锁慢；会出现死锁；锁定粒度最小，发生锁冲突的概率最低，并发度也最高。  行级锁是针对数据表中的行进行锁定，锁定指定的行，其他事务对同一行的其他操作会被阻塞。</li>
+<li>页级锁（Page-level Lock）：开销和加锁时间界于表锁和行锁之间；会出现死锁；锁定粒度界于表锁和行锁之间，并发度一般。  页级锁作用于表的页（通常是一组连续的数据行）。</li>
+<li>间隙锁（Gap Lock）：间隙锁用于锁定某个范围内的数据，而不是具体的行，用于防止其他会话在某个范围内插入新数据，从而确保查询的一致性。</li>
+<li>临键锁（Next-Key Lock）：临键锁是一种组合了行级锁和间隙锁的锁类型，用于防止幻读（Phantom Read）和确保范围查询的一致性。</li>
+<li>意向锁：意向锁（IS、IX）是InnoDB引擎操作数据之前自动加的，不需要用户干预；意向共享锁表示事务准备给数据行加入共享锁，意向排它锁表示事务准备给数据行加入排他锁。</li>
+</ol>
+<h3 id="2、MySQL数据库中有哪些不同的表格？"><a href="#2、MySQL数据库中有哪些不同的表格？" class="headerlink" title="2、MySQL数据库中有哪些不同的表格？"></a>2、MySQL数据库中有哪些不同的表格？</h3><p>在 MySQL 中，数据表是一个或多个字段的集合（有组织排列），并且每个字段可以存储特定的类型数据。常见的 MySQL 表格有以下几种：</p>
+<p>1、MyISAM：MyISAM 是最早出现的 MySQL 存储引擎之一，它默认不支持事务特性，但是表格可以被压缩成只读表格。MyISAM 适用于非事务型应用程序和具有高度静态的数据内容的应用程序。</p>
+<p>2、InnoDB：InnoDB 是一种与 SQL 标准完全兼容的 MySQL 引擎。它提供了 ACID 支持，并支持通过事务来保证数据完整性和一致性。它还包括行级锁特性，这意味着同时发生的写操作不会相互影响。在 InnoDB 中，保存数据库的文件称为表空间（tablespace），InnoDb使用聚簇索引，数据的物理存储顺序就是索引的顺序。</p>
+<p>3、MEMORY：Memory 引擎将数据存储在内存中，因此比较适合用于速度要求高、数据持久性要求少的应用。如果服务器重新启动，保存在 Memory 引擎表格中的数据将消失。由于其存储方式的局限性，它仅适用于比较小的数据库。</p>
+<p>4、Heap：Heap 存储引擎是 MySQL 的一个轻量级存储引擎。它将数据保存在内存中，并允许高速访问，但如果服务器重新启动，则所有 Heap 表格中的数据都会消失。相比于其它表格类型，Heap 存储引擎非常限制筛选、统计和排序性能。</p>
+<p>5、CSV：CSV 存储引擎可以使用类似电子表格的格式来读取、写入和操作 Comma-Separated Value （CSV）文件。CSV 格式是一种文本文件格式，其中不同字段之间用逗号分隔开，在需要进行大批量数据导入的场景下具有较高的优势。</p>
+<p>6、Blackhole：Blackhole 存储引擎向接受但并不真正记录或保留任何数据。当使用该引擎的表接收数据写入时会直接被丢弃, 这个模式可能会对因为需要附加处理而被阻塞的精细生产环境有所帮助。</p>
+<p>7、Merge: 基于联合多个 MyISAM 表派生出新表的技术，可实现多个表操作简便，但由于 MyISAM 的限制，这一功能缺乏完善性。</p>
+<p>总之，MySQL 提供了多种机制，以让用户根据应用的特定要求选择不同的存储引擎类型，根据用户的应用特点以及性能需求作出选择。用户选择的引擎需要考虑到保证数据完整性、并发处理能力、查询效率等多个方面。</p>
+<h3 id="3、简述在-MySQL-数据库中-MyISAM-和-InnoDB-的区别"><a href="#3、简述在-MySQL-数据库中-MyISAM-和-InnoDB-的区别" class="headerlink" title="3、简述在 MySQL 数据库中 MyISAM 和 InnoDB 的区别"></a>3、简述在 MySQL 数据库中 MyISAM 和 InnoDB 的区别</h3><p><strong>MyISAM：</strong><br>不支持事务，但是每次查询都是原子的；<br>支持表级锁，即每次操作是对整个表加锁；<br>存储表的总行数；<br>一个 MYISAM 表有三个文件：索引文件、表结构文件、数据文件；<br>采用菲聚集索引，索引文件的数据域存储指向数据文件的指针。辅索引与主索引基本一致，但是辅索引不用保证唯一性。<br><strong>InnoDb：</strong><br>支持 ACID 的事务，支持事务的四种隔离级别；<br>支持行级锁及外键约束：因此可以支持写并发；<br>不存储总行数：<br>一个 InnoDb 引擎存储在一个文件空间（共享表空间，表大小不受操作系统控制，一个表可能分布在多个文件里），也有可能为多个（设置为独立表空，表大小受操作系统文件大小限制，一般为 2G），受操作系统文件大小的限制；<br>主键索引采用聚集索引（索引的数据域存储数据文件本身），辅索引的数据域存储主键的值；因此从辅索引查找数据，需要先通过辅索引找到主键值，再访问辅索引；最好使用自增主键，防止插入数据时，为维持 B+树结构，文件的大调整  。</p>
+<h3 id="4、MySQL-中-InnoDB-支持的四种事务隔离级别名称，以及逐级之间的区别？"><a href="#4、MySQL-中-InnoDB-支持的四种事务隔离级别名称，以及逐级之间的区别？" class="headerlink" title="4、MySQL 中 InnoDB 支持的四种事务隔离级别名称，以及逐级之间的区别？"></a>4、MySQL 中 InnoDB 支持的四种事务隔离级别名称，以及逐级之间的区别？</h3><p>SQL 标准定义的四个隔离级别为：<br>1、read uncommited ：读到未提交数据<br>2、read committed：脏读，不可重复读<br>3、repeatable read：可重读<br>4、serializable ：串行事物  </p>
+<h3 id="5、CHAR-和-VARCHAR-的区别？"><a href="#5、CHAR-和-VARCHAR-的区别？" class="headerlink" title="5、CHAR 和 VARCHAR 的区别？"></a>5、CHAR 和 VARCHAR 的区别？</h3><p>1、CHAR 和 VARCHAR 类型在存储和检索方面有所不同<br>2、CHAR 列长度固定为创建表时声明的长度，长度值范围是 1 到 255 当 CHAR值被存储时，它们被用空格填充到特定长度，检索 CHAR 值时需删除尾随空格。  </p>
+<h3 id="6、主键和候选键有什么区别？"><a href="#6、主键和候选键有什么区别？" class="headerlink" title="6、主键和候选键有什么区别？"></a>6、主键和候选键有什么区别？</h3><p>表格的每一行都由主键唯一标识,一个表只有一个主键。<br>主键也是候选键。按照惯例，候选键可以被指定为主键，并且可以用于任何外键引用。  </p>
+<h3 id="7、myisamchk-是用来做什么的？"><a href="#7、myisamchk-是用来做什么的？" class="headerlink" title="7、myisamchk 是用来做什么的？"></a>7、myisamchk 是用来做什么的？</h3><p>它用来压缩 MyISAM 表，这减少了磁盘或内存使用。<br><strong>MyISAM Static 和 MyISAM Dynamic 有什么区别？</strong><br>在 MyISAM Static 上的所有字段有固定宽度。动态 MyISAM 表将具有像 TEXT，BLOB 等字段，以适应不同长度的数据类型。<br>MyISAM Static 在受损情况下更容易恢复。  </p>
+<h3 id="8、如果一个表有一列定义为-TIMESTAMP，将发生什么？"><a href="#8、如果一个表有一列定义为-TIMESTAMP，将发生什么？" class="headerlink" title="8、如果一个表有一列定义为 TIMESTAMP，将发生什么？"></a>8、如果一个表有一列定义为 TIMESTAMP，将发生什么？</h3><p>每当行被更改时，时间戳字段将获取当前时间戳。<br><strong>列设置为 AUTO INCREMENT 时，如果在表中达到最大值，会发生什么情况？</strong><br>它会停止递增，任何进一步的插入都将产生错误，因为密钥已被使用。<br><strong>怎样才能找出最后一次插入时分配了哪个自动增量？</strong><br>LAST_INSERT_ID 将返回由 Auto_increment 分配的最后一个值，并且不需要指<br>定表名称。  </p>
+<h3 id="9、你怎么看到为表格定义的所有索引？"><a href="#9、你怎么看到为表格定义的所有索引？" class="headerlink" title="9、你怎么看到为表格定义的所有索引？"></a>9、你怎么看到为表格定义的所有索引？</h3><p>索引是通过以下方式为表格定义的：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SHOW INDEX FROM &lt;tablename&gt;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="10、LIKE-声明中的％和-是什么意思？"><a href="#10、LIKE-声明中的％和-是什么意思？" class="headerlink" title="10、LIKE 声明中的％和_是什么意思？"></a>10、LIKE 声明中的％和_是什么意思？</h3><p>％对应于 0 个或更多字符，_只是 LIKE 语句中的一个字符。<br><strong>如何在 Unix 和 MySQL 时间戳之间进行转换？</strong><br>UNIX_TIMESTAMP 是从 MySQL 时间戳转换为 Unix 时间戳的命令<br>FROM_UNIXTIME 是从 Unix 时间戳转换为 MySQL 时间戳的命令  </p>
+<h3 id="11、列对比运算符是什么？"><a href="#11、列对比运算符是什么？" class="headerlink" title="11、列对比运算符是什么？"></a>11、列对比运算符是什么？</h3><p>在 SELECT 语句的列比较中使用&#x3D;，&lt;&gt;，&lt;&#x3D;，&lt;，&gt; &#x3D;，&gt;，&lt;&lt;，&gt;&gt;，&lt;&#x3D;&gt;，AND，OR 或 LIKE 运算符。  </p>
+<h3 id="12、BLOB-和-TEXT-有什么区别？"><a href="#12、BLOB-和-TEXT-有什么区别？" class="headerlink" title="12、BLOB 和 TEXT 有什么区别？"></a>12、BLOB 和 TEXT 有什么区别？</h3><p>BLOB 是一个二进制对象，可以容纳可变数量的数据。TEXT 是一个不区分大小写的 BLOB。<br>BLOB 和 TEXT 类型之间的唯一区别在于对 BLOB 值进行排序和比较时区分大小写，对 TEXT 值不区分大小写。  </p>
+<h3 id="13、MySQL-fetch-array-和-MySQL-fetch-object-的区别是什么？"><a href="#13、MySQL-fetch-array-和-MySQL-fetch-object-的区别是什么？" class="headerlink" title="13、MySQL_fetch_array 和 MySQL_fetch_object 的区别是什么？"></a>13、MySQL_fetch_array 和 MySQL_fetch_object 的区别是什么？</h3><p>以下是 MySQL_fetch_array 和 MySQL_fetch_object 的区别：<br>MySQL_fetch_array（） – 将结果行作为关联数组或来自数据库的常规数组返回。<br>MySQL_fetch_object – 从数据库返回结果行作为对象。  </p>
+<h3 id="14、MyISAM-表格将在哪里存储，并且还提供其存储格式？"><a href="#14、MyISAM-表格将在哪里存储，并且还提供其存储格式？" class="headerlink" title="14、MyISAM 表格将在哪里存储，并且还提供其存储格式？"></a>14、MyISAM 表格将在哪里存储，并且还提供其存储格式？</h3><p>每个 MyISAM 表格以三种格式存储在磁盘上：<br>·“.frm”文件存储表定义<br>·数据文件具有“.MYD”（MYData）扩展名<br>索引文件具有“.MYI”（MYIndex）扩展名  </p>
+<h3 id="15、MySQL-如何优化-DISTINCT？"><a href="#15、MySQL-如何优化-DISTINCT？" class="headerlink" title="15、MySQL 如何优化 DISTINCT？"></a>15、MySQL 如何优化 DISTINCT？</h3><p>DISTINCT 在所有列上转换为 GROUP BY，并与 ORDER BY 子句结合使用。<br>SELECT DISTINCT t1.a FROM t1,t2 where t1.a&#x3D;t2.a;</p>
+<h3 id="16、如何显示前-50-行？"><a href="#16、如何显示前-50-行？" class="headerlink" title="16、如何显示前 50 行？"></a>16、如何显示前 50 行？</h3><p>在 MySQL 中，使用以下代码查询显示前 50 行：<br>SELECT * FROM LIMIT 0,50;</p>
+<h3 id="17、可以使用多少列创建索引？"><a href="#17、可以使用多少列创建索引？" class="headerlink" title="17、可以使用多少列创建索引？"></a>17、可以使用多少列创建索引？</h3><p>任何标准表最多可以创建 16 个索引列。  </p>
+<h3 id="18、NOW（）和-CURRENT-DATE（）有什么区别？"><a href="#18、NOW（）和-CURRENT-DATE（）有什么区别？" class="headerlink" title="18、NOW（）和 CURRENT_DATE（）有什么区别？"></a>18、NOW（）和 CURRENT_DATE（）有什么区别？</h3><p>NOW（）命令用于显示当前年份，月份，日期，小时，分钟和秒。<br>CURRENT_DATE（）仅显示当前年份，月份和日期。</p>
+<h3 id="19、什么是非标准字符串类型？"><a href="#19、什么是非标准字符串类型？" class="headerlink" title="19、什么是非标准字符串类型？"></a>19、什么是非标准字符串类型？</h3><p>1、TINYTEXT<br>2、TEXT<br>3、MEDIUMTEXT<br>4、LONGTEXT</p>
+<h3 id="20、什么是通用-SQL-函数？"><a href="#20、什么是通用-SQL-函数？" class="headerlink" title="20、什么是通用 SQL 函数？"></a>20、什么是通用 SQL 函数？</h3><p>1、CONCAT(A, B) – 连接两个字符串值以创建单个字符串输出。通常用于将两个或多个字段合并为一个字段。  </p>
+<p>2、FORMAT(X, D)- 格式化数字 X 到 D 有效数字。<br>3、CURRDATE(), CURRTIME()- 返回当前日期或时间。<br>4、NOW（） – 将当前日期和时间作为一个值返回。<br>5、MONTH（），DAY（），YEAR（），WEEK（），WEEKDAY（） – 从日期值中提取给定数据。<br>6、HOUR（），MINUTE（），SECOND（） – 从时间值中提取给定数据。<br>7、DATEDIFF（A，B） – 确定两个日期之间的差异，通常用于计算年龄<br>8、SUBTIMES（A，B） – 确定两次之间的差异。<br>9、FROMDAYS（INT） – 将整数天数转换为日期值。</p>
+<h3 id="21、MySQL-支持事务吗？"><a href="#21、MySQL-支持事务吗？" class="headerlink" title="21、MySQL 支持事务吗？"></a>21、MySQL 支持事务吗？</h3><p>在缺省模式下，MySQL 是 autocommit 模式的，所有的数据库更新操作都会即时提交，所以在缺省情况下，MySQL 是不支持事务的。<br>但是如果你的 MySQL 表类型是使用 InnoDB Tables 或 BDB tables 的话，你的MySQL 就可以使用事务处理,使用 SETAUTOCOMMIT&#x3D;0 就可以使 MySQL 允许在非 autocommit 模式，在非autocommit 模式下，你必须使用 COMMIT 来提交你的更改，或者用 ROLLBACK来回滚你的更改。  </p>
+<h3 id="22、MySQL-里记录货币用什么字段类型好"><a href="#22、MySQL-里记录货币用什么字段类型好" class="headerlink" title="22、MySQL 里记录货币用什么字段类型好"></a>22、MySQL 里记录货币用什么字段类型好</h3><p>NUMERIC 和 DECIMAL 类型被 MySQL 实现为同样的类型，这在 SQL92 标准允许。他们被用于保存值，该值的准确精度是极其重要的值，例如与金钱有关的数<br>据。当声明一个类是这些类型之一时，精度和规模的能被(并且通常是)指定。<br>例如：<br>salary DECIMAL(9,2)<br>在这个例子中，9(precision)代表将被用于存储值的总的小数位数，而 2(scale)代表将被用于存储小数点后的位数。<br>因此，在这种情况下，能被存储在 salary 列中的值的范围是从-9999999.99 到9999999.99。</p>
+<h3 id="23、MySQL-有关权限的表都有哪几个？"><a href="#23、MySQL-有关权限的表都有哪几个？" class="headerlink" title="23、MySQL 有关权限的表都有哪几个？"></a>23、MySQL 有关权限的表都有哪几个？</h3><p>MySQL 服务器通过权限表来控制用户对数据库的访问，权限表存放在 MySQL 数据库里，由 MySQL_install_db 脚本初始化。这些权限表分别 user，db，table_priv，columns_priv 和 host。</p>
+<h3 id="24、列的字符串类型可以是什么？"><a href="#24、列的字符串类型可以是什么？" class="headerlink" title="24、列的字符串类型可以是什么？"></a>24、列的字符串类型可以是什么？</h3><p>字符串类型是：<br>1、SET<br>2、BLOB<br>3、ENUM<br>4、CHAR<br>5、TEXT  </p>
+<h3 id="25、MySQL-数据库作发布系统的存储，一天五万条以上的增量，预计运维三年-怎么优化？"><a href="#25、MySQL-数据库作发布系统的存储，一天五万条以上的增量，预计运维三年-怎么优化？" class="headerlink" title="25、MySQL 数据库作发布系统的存储，一天五万条以上的增量，预计运维三年,怎么优化？"></a>25、MySQL 数据库作发布系统的存储，一天五万条以上的增量，预计运维三年,怎么优化？</h3><p>1、设计良好的数据库结构，允许部分数据冗余，尽量避免 join 查询，提高效率。<br>2、选择合适的表字段数据类型和存储引擎，适当的添加索引。<br>3、MySQL 库主从读写分离。<br>4、找规律分表，减少单表中的数据量提高查询速度。<br>5、添加缓存机制，比如 memcached，apc 等。<br>6、不经常改动的页面，生成静态页面。<br>7、书写高效率的 SQL。比如 SELECT * FROM TABEL 改为 SELECT field_1,field_2, field_3 FROM TABLE.</p>
+<h3 id="26、锁的优化策略"><a href="#26、锁的优化策略" class="headerlink" title="26、锁的优化策略"></a>26、锁的优化策略</h3><p>1、读写分离<br>2、分段加锁<br>3、减少锁持有的时间<br>4.多个线程尽量以相同的顺序去获取资源不能将锁的粒度过于细化，不然可能会出现线程的加锁和释放次数过多，反而效率不如一次加一把大锁。</p>
+<h3 id="27、索引的底层实现原理和优化"><a href="#27、索引的底层实现原理和优化" class="headerlink" title="27、索引的底层实现原理和优化"></a>27、索引的底层实现原理和优化</h3><p>B+树，经过优化的 B+树主要是在所有的叶子结点中增加了指向下一个叶子节点的指针，因此 InnoDB 建议为大部分表使用默认自增的主键作为主索引。</p>
+<h3 id="28、什么情况下设置了索引但无法使用"><a href="#28、什么情况下设置了索引但无法使用" class="headerlink" title="28、什么情况下设置了索引但无法使用"></a>28、什么情况下设置了索引但无法使用</h3><p>1、以“%”开头的 LIKE 语句，模糊匹配<br>2、OR 语句前后没有同时使用索引<br>3、数据类型出现隐式转化（如 varchar 不加单引号的话可能会自动转换为 int 型）</p>
+<h3 id="29、实践中如何优化-MySQL"><a href="#29、实践中如何优化-MySQL" class="headerlink" title="29、实践中如何优化 MySQL"></a>29、实践中如何优化 MySQL</h3><p>最好是按照以下顺序优化：<br>1、SQL 语句及索引的优化<br>2、数据库表结构的优化<br>3、系统配置的优化<br>4、硬件的优化<br>详细可以查看 阿里 P8 架构师谈：<a href="https://mikechen.cc/3305.html">MySQL 慢查询优化、索引优化、以及表等优化总结</a>  </p>
+<h3 id="30、优化数据库的方法"><a href="#30、优化数据库的方法" class="headerlink" title="30、优化数据库的方法"></a>30、优化数据库的方法</h3><p>1、选取最适用的字段属性，尽可能减少定义字段宽度，尽量把字段设置 NOTNULL，例如’省份’、’性别’最好适用 ENUM<br>2、使用连接(JOIN)来代替子查询<br>3、适用联合(UNION)来代替手动创建的临时表<br>4、事务处理<br>5、锁定表、优化事务处理<br>6、适用外键，优化锁定表<br>7、建立索引<br>8、优化查询语句  </p>
+<h3 id="31、简单描述-MySQL-中，索引，主键，唯一索引，联合索引的区别，对数据库的性能有什么影响（从读写两方面）"><a href="#31、简单描述-MySQL-中，索引，主键，唯一索引，联合索引的区别，对数据库的性能有什么影响（从读写两方面）" class="headerlink" title="31、简单描述 MySQL 中，索引，主键，唯一索引，联合索引的区别，对数据库的性能有什么影响（从读写两方面）"></a>31、简单描述 MySQL 中，索引，主键，唯一索引，联合索引的区别，对数据库的性能有什么影响（从读写两方面）</h3><p>索引是一种特殊的文件(InnoDB 数据表上的索引是表空间的一个组成部分)，它们包含着对数据表里所有记录的引用指针。<br>普通索引(由关键字 KEY 或 INDEX 定义的索引)的唯一任务是加快对数据的访问速度。<br>普通索引允许被索引的数据列包含重复的值。如果能确定某个数据列将只包含彼此各不相同的值，在为这个数据列创建索引的时候就应该用关键字 UNIQUE 把它<br>定义为一个唯一索引。也就是说，唯一索引可以保证数据记录的唯一性。<br>主键，是一种特殊的唯一索引，在一张表中只能定义一个主键索引，主键用于唯一标识一条记录，使用关键字 PRIMARY KEY 来创建。<br>索引可以覆盖多个数据列，如像 INDEX(columnA, columnB)索引，这就是联合索引。<br>索引可以极大的提高数据的查询速度，但是会降低插入、删除、更新表的速度，因为在执行这些写操作时，还要操作索引文件。</p>
+<h3 id="32、数据库中的事务是什么"><a href="#32、数据库中的事务是什么" class="headerlink" title="32、数据库中的事务是什么?"></a>32、数据库中的事务是什么?</h3><p>事务（transaction）是作为一个单元的一组有序的数据库操作。如果组中的所有操作都成功，则认为事务成功，即使只有一个操作失败，事务也不成功。如果所<br>有操作完成，事务则提交，其修改将作用于所有其他数据库进程。如果一个操作失败，则事务将回滚，该事务所有操作的影响都将取消。<br>事务特性：<br>1、原子性：即不可分割性，事务要么全部被执行，要么就全部不被执行。<br>2、一致性或可串性。事务的执行使得数据库从一种正确状态转换成另一种正确状态 </p>
+<p>3、隔离性。在事务正确提交之前，不允许把该事务对数据的任何改变提供给任何其他事务，<br>4、持久性。事务正确提交后，其结果将永久保存在数据库中，即使在事务提交后有了其他故障，事务的处理结果也会得到保存。<br>或者这样理解：<br>事务就是被绑定在一起作为一个逻辑工作单元的 SQL 语句分组，如果任何一个语句操作失败那么整个操作就被失败，以后操作就会回滚到操作前状态，或者是上有个节点。为了确保要么执行，要么不执行，就可以使用事务。要将有组语句作为事务考虑，就需要通过 ACID 测试，即原子性，一致性，隔离性和持久性。  </p>
+<h3 id="33、SQL-注入漏洞产生的原因？如何防止？"><a href="#33、SQL-注入漏洞产生的原因？如何防止？" class="headerlink" title="33、SQL 注入漏洞产生的原因？如何防止？"></a>33、SQL 注入漏洞产生的原因？如何防止？</h3><p>SQL 注入产生的原因：程序开发过程中不注意规范书写 sql 语句和对特殊字符进行过滤，导致客户端可以通过全局变量 POST 和 GET 提交一些 sql 语句正常执行。<br>防止 SQL 注入的方式：<br>开启配置文件中的 magic_quotes_gpc 和 magic_quotes_runtime 设置执行 sql 语句时使用 addslashes 进行 sql 语句转换Sql 语句书写尽量不要省略双引号和单引号。<br>过滤掉 sql 语句中的一些关键词：update、insert、delete、select、 * 。</p>
+<p>提高数据库表和字段的命名技巧，对一些重要的字段根据程序的特点命名，取不易被猜到的。  </p>
+<h3 id="34、为表中得字段选择合适得数据类型"><a href="#34、为表中得字段选择合适得数据类型" class="headerlink" title="34、为表中得字段选择合适得数据类型"></a>34、为表中得字段选择合适得数据类型</h3><p>字段类型优先级: 整形&gt;date,time&gt;enum,char&gt;varchar&gt;blob,text<br>优先考虑数字类型，其次是日期或者二进制类型，最后是字符串类型，同级别得<br>数据类型，应该优先选择占用空间小的数据类型</p>
+<h3 id="35、存储时期"><a href="#35、存储时期" class="headerlink" title="35、存储时期"></a>35、存储时期</h3><p>Datatime:以 YYYY-MM-DD HH:MM:SS 格式存储时期时间，精确到秒，<br>占用 8 个字节得存储空间，datatime 类型与时区无关<br>Timestamp:以时间戳格式存储，占用 4 个字节，范围小 1970-1-1 到 2038-1-19，<br>显示依赖于所指定得时区，默认在第一个列行的数据修改时可以自动得修改<br>timestamp 列得值<br>Date:（生日）占用得字节数比使用字符串.datatime.int 储存要少，使用 date 只<br>需要 3 个字节，存储日期月份，还可以利用日期时间函数进行日期间得计算<br>Time:存储时间部分得数据<br>注意:不要使用字符串类型来存储日期时间数据（通常比字符串占用得储存空间小，<br>在进行查找过滤可以利用日期得函数）<br>使用 int 存储日期时间不如使用 timestamp 类型  </p>
+<h3 id="36、对于关系型数据库而言，索引是相当重要的概念，请回答"><a href="#36、对于关系型数据库而言，索引是相当重要的概念，请回答" class="headerlink" title="36、对于关系型数据库而言，索引是相当重要的概念，请回答"></a>36、对于关系型数据库而言，索引是相当重要的概念，请回答</h3><p>有关索引的几个问题：<br>1、索引的目的是什么？<br>快速访问数据表中的特定信息，提高检索速度创建唯一性索引，保证数据库表中每一行数据的唯一性。<br>加速表和表之间的连接使用分组和排序子句进行数据检索时，可以显著减少查询中分组和排序的时间<br>2、索引对数据库系统的负面影响是什么？<br>负面影响：<br>创建索引和维护索引需要耗费时间，这个时间随着数据量的增加而增加；索引需要占用物理空间，不光是表需要占用数据空间，每个索引也需要占用物理空间；<br>当对表进行增、删、改、的时候索引也要动态维护，这样就降低了数据的维护速度。<br>3、为数据表建立索引的原则有哪些？<br>在最频繁使用的、用以缩小查询范围的字段上建立索引。<br>在频繁使用的、需要排序的字段上建立索引<br>4、什么情况下不宜建立索引？  </p>
+<p>对于查询中很少涉及的列或者重复值比较多的列，不宜建立索引。<br>对于一些特殊的数据类型，不宜建立索引，比如文本字段（text）等</p>
+<h3 id="37、解释-MySQL-外连接、内连接与自连接的区别"><a href="#37、解释-MySQL-外连接、内连接与自连接的区别" class="headerlink" title="37、解释 MySQL 外连接、内连接与自连接的区别"></a>37、解释 MySQL 外连接、内连接与自连接的区别</h3><p>先说什么是交叉连接: 交叉连接又叫笛卡尔积，它是指不使用任何条件，直接将一个表的所有记录和另一个表中的所有记录一一匹配。<br>内连接 则是只有条件的交叉连接，根据某个条件筛选出符合条件的记录，不符合条件的记录不会出现在结果集中，即内连接只连接匹配的行。<br>外连接 其结果集中不仅包含符合连接条件的行，而且还会包括左表、右表或两个表中的所有数据行，这三种情况依次称之为左外连接，右外连接，和全外连接。<br>左外连接，也称左连接，左表为主表，左表中的所有记录都会出现在结果集中，对于那些在右表中并没有匹配的记录，仍然要显示，右边对应的那些字段值以NULL 来填充。右外连接，也称右连接，右表为主表，右表中的所有记录都会出现在结果集中。左连接和右连接可以互换，MySQL 目前还不支持全外连接。<br>38、Myql 中的事务回滚机制概述<br>事务是用户定义的一个数据库操作序列，这些操作要么全做要么全不做，是一个不可分割的工作单位，事务回滚是指将该事务已经完成的对数据库的更新操作撤销。<br>要同时修改数据库中两个不同表时，如果它们不是一个事务的话，当第一个表修改完，可能第二个表修改过程中出现了异常而没能修改，此时就只有第二个表依旧是未修改之前的状态，而第一个表已经被修改完毕。而当你把它们设定为一个事务的时候，当第一个表修改完，第二表修改出现异常而没能修改，第一个表和<br>第二个表都要回到未修改的状态，这就是所谓的事务回滚  </p>
+<h3 id="39、SQL-语言包括哪几部分？每部分都有哪些操作关键字？"><a href="#39、SQL-语言包括哪几部分？每部分都有哪些操作关键字？" class="headerlink" title="39、SQL 语言包括哪几部分？每部分都有哪些操作关键字？"></a>39、SQL 语言包括哪几部分？每部分都有哪些操作关键字？</h3><p>SQL 语言包括数据定义(DDL)、数据操纵(DML),数据控制(DCL)和数据查询（DQL）<br>四个部分。<br>数据定义：Create Table,Alter Table,Drop Table, Craete&#x2F;Drop Index 等<br>数据操纵：Select ,insert,update,delete,<br>数据控制：grant,revoke<br>数据查询：select</p>
+<h3 id="40、完整性约束包括哪些？"><a href="#40、完整性约束包括哪些？" class="headerlink" title="40、完整性约束包括哪些？"></a>40、完整性约束包括哪些？</h3><p>数据完整性(Data Integrity)是指数据的精确(Accuracy)和可靠性(Reliability)。<br>分为以下四类：<br>1、实体完整性：规定表的每一行在表中是惟一的实体。<br>2、域完整性：是指表中的列必须满足某种特定的数据类型约束，其中约束又包括取值范围、精度等规定。<br>3、参照完整性：是指两个表的主关键字和外关键字的数据应一致，保证了表之间的数据的一致性，防止了数据丢失或无意义的数据在数据库中扩散。<br>4、用户定义的完整性：不同的关系数据库系统根据其应用环境的不同，往往还需要一些特殊的约束条件。用户定义的完整性即是针对某个特定关系数据库的约束条件，它反映某一具体应用必须满足的语义要求。<br>与表有关的约束：包括列约束(NOT NULL（非空约束）)和表约束(PRIMARY KEY、foreign key、check、UNIQUE) 。  </p>
+<h3 id="41、什么是锁？"><a href="#41、什么是锁？" class="headerlink" title="41、什么是锁？"></a>41、什么是锁？</h3><p>答：</p>
+<p>​	数据库是一个多用户使用的共享资源。当多个用户并发地存取数据时，在数据库中就会产生多个事务同时存取同一数据的情况。若对并发操作不加控制就可<br>能会读取和存储不正确的数据，破坏数据库的一致性。<br>​	加锁是实现数据库并发控制的一个非常重要的技术。当事务在对某个数据对象进行操作前，先向系统发出请求，对其加锁。加锁后事务就对该数据对象有了一定的控制，在该事务释放锁之前，其他的事务不能对此数据对象进行更新操作。<br>​	基本锁类型：锁包括行级锁和表级锁</p>
+<h3 id="42、什么叫视图？游标是什么？"><a href="#42、什么叫视图？游标是什么？" class="headerlink" title="42、什么叫视图？游标是什么？"></a>42、什么叫视图？游标是什么？</h3><p>答：视图是一种虚拟的表，具有和物理表相同的功能。可以对视图进行增，改，查，操作，视图通常是有一个表或者多个表的行或列的子集。对视图的修改不影响基本表。它使得我们获取数据更容易，相比多表查询。<br>游标：是对查询出来的结果集作为一个单元来有效的处理。游标可以定在该单元中的特定行，从结果集的当前行检索一行或多行。可以对结果集当前行做修改。一般不使用游标，但是需要逐条处理数据的时候，游标显得十分重要。  </p>
+<h3 id="43、什么是存储过程？用什么来调用？"><a href="#43、什么是存储过程？用什么来调用？" class="headerlink" title="43、什么是存储过程？用什么来调用？"></a>43、什么是存储过程？用什么来调用？</h3><p>答：存储过程是一个预编译的 SQL 语句，优点是允许模块化的设计，就是说只需创建一次，以后在该程序中就可以调用多次。如果某次操作需要执行多次 SQL，<br>使用存储过程比单纯 SQL 语句执行要快。可以用一个命令对象来调用存储过程。</p>
+<h3 id="44、如何通俗地理解三个范式？"><a href="#44、如何通俗地理解三个范式？" class="headerlink" title="44、如何通俗地理解三个范式？"></a>44、如何通俗地理解三个范式？</h3><p>答：</p>
+<p>第一范式：1NF 是对属性的原子性约束，要求属性具有原子性，不可再分解；<br>第二范式：2NF 是对记录的惟一性约束，要求记录有惟一标识，即实体的惟一性；<br>第三范式：3NF 是对字段冗余性的约束，即任何字段不能由其他字段派生出来，它要求字段没有冗余。</p>
+<p>范式化设计优缺点:<br>优点:<br>    可以尽量得减少数据冗余，使得更新快，体积小<br>缺点:</p>
+<p>​	对于查询需要多个表进行关联，减少写得效率增加读得效率，更难进行索引优化<br>反范式化:<br>优点:可以减少表得关联，可以更好得进行索引优化<br>缺点:数据冗余以及数据异常，数据得修改需要更多的成本  </p>
+<h3 id="45、什么是基本表？什么是视图？"><a href="#45、什么是基本表？什么是视图？" class="headerlink" title="45、什么是基本表？什么是视图？"></a>45、什么是基本表？什么是视图？</h3><p>答：基本表是本身独立存在的表，在 SQL 中一个关系就对应一个表。 视图是从一个或几个基本表导出的表。视图本身不独立存储在数据库中，是一个虚表</p>
+<h3 id="46、试述视图的优点？"><a href="#46、试述视图的优点？" class="headerlink" title="46、试述视图的优点？"></a>46、试述视图的优点？</h3><p>答：</p>
+<ol>
+<li><p>视图能够简化用户的操作 </p>
+</li>
+<li><p>视图使用户能以多种角度看待同一数据；</p>
+</li>
+</ol>
+<ol start="3">
+<li>视图为数据库提供了一定程度的逻辑独立性；</li>
+<li>视图能够对机密数据提供安全保护。</li>
+</ol>
+<h3 id="47、-NULL-是什么意思"><a href="#47、-NULL-是什么意思" class="headerlink" title="47、 NULL 是什么意思"></a>47、 NULL 是什么意思</h3><p>答：NULL 这个值表示 UNKNOWN(未知):它不表示“”(空字符串)。对 NULL 这个值的任何比较都会生产一个 NULL 值。您不能把任何值与一个 NULL 值进行比较，并在逻辑上希望获得一个答案。<br>使用 IS NULL 来进行 NULL 判断</p>
+<h3 id="48、主键、外键和索引的区别？"><a href="#48、主键、外键和索引的区别？" class="headerlink" title="48、主键、外键和索引的区别？"></a>48、主键、外键和索引的区别？</h3><p>主键、外键和索引的区别<br><strong>定义：</strong><br>主键–唯一标识一条记录，不能有重复的，不允许为空<br>外键–表的外键是另一表的主键, 外键可以有重复的, 可以是空值<br>索引–该字段没有重复值，但可以有一个空值<br><strong>作用：</strong><br>主键–用来保证数据完整性<br>外键–用来和其他表建立联系用的<br>索引–是提高查询排序的速度<br><strong>个数：</strong><br>主键–主键只能有一个<br>外键–一个表可以有多个外键<br>索引–一个表可以有多个唯一索引  </p>
+<h3 id="49、你可以用什么来确保表格里的字段只接受特定范围里的值"><a href="#49、你可以用什么来确保表格里的字段只接受特定范围里的值" class="headerlink" title="49、你可以用什么来确保表格里的字段只接受特定范围里的值?"></a>49、你可以用什么来确保表格里的字段只接受特定范围里的值?</h3><p>答：Check 限制，它在数据库表格里被定义，用来限制输入该列的值。<br>触发器也可以被用来限制数据库表格里的字段能够接受的值，但是这种办法要求<br>触发器在表格里被定义，这可能会在某些情况下影响到性能 。</p>
+<h3 id="50、说说对-SQL-语句优化有哪些方法？（选择几条）"><a href="#50、说说对-SQL-语句优化有哪些方法？（选择几条）" class="headerlink" title="50、说说对 SQL 语句优化有哪些方法？（选择几条）"></a>50、说说对 SQL 语句优化有哪些方法？（选择几条）</h3><p>1、Where 子句中：where 表之间的连接必须写在其他 Where 条件之前，那些可以过滤掉最大数量记录的条件必须写在 Where 子句的末尾.HAVING 最后。<br>2、用 EXISTS 替代 IN、用 NOT EXISTS 替代 NOT IN。<br>3、 避免在索引列上使用计算<br>4、避免在索引列上使用 IS NULL 和 IS NOT NULL<br>5、对查询进行优化，应尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引。<br>6、应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描<br>7、应尽量避免在 where 子句中对字段进行表达式操作，这将导致引擎放弃使用索引而进行全表扫描  </p>
+]]></content>
+      <categories>
+        <category>面试宝典</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 并发编程（一）</title>
+    <url>/java/java-concurrent-programming1/</url>
+    <content><![CDATA[<h3 id="1、在-java-中守护线程和本地线程区别？"><a href="#1、在-java-中守护线程和本地线程区别？" class="headerlink" title="1、在 java 中守护线程和本地线程区别？"></a>1、在 java 中守护线程和本地线程区别？</h3><p>java 中的线程分为两种：守护线程（Daemon）和用户线程（User）。<br>任何线程都可以设置为守护线程和用户线程，通过方法 Thread.setDaemon(boolon)；true 则把该线程设置为守护线程，反之则为用户线程。Thread.setDaemon()必须在 Thread.start()之前调用，否则运行时会抛出异常。<br><strong>两者的区别：</strong><br>唯一的区别是判断虚拟机(JVM)何时离开，Daemon 是为其他线程提供服务，如果全部的 User Thread 已经撤离，Daemon 没有可服务的线程，JVM 撤离。也可以理解为守护线程是 JVM 自动创建的线程（但不一定），用户线程是程序创建的线程；比如 JVM 的垃圾回收线程是一个守护线程，当所有线程已经撤离，不再产生垃圾，守护线程自然就没事可干了，当垃圾回收线程是 Java 虚拟机上仅剩的线程时，Java 虚拟机会自动离开。<br><strong>扩展：</strong>Thread Dump 打印出来的线程信息，含有 daemon 字样的线程即为守护进程，可能会有：服务守护进程、编译守护进程、windows 下的监听 Ctrl+break的守护进程、Finalizer 守护进程、引用处理守护进程、GC 守护进程。</p>
+<h3 id="2、线程与进程的区别？"><a href="#2、线程与进程的区别？" class="headerlink" title="2、线程与进程的区别？"></a>2、线程与进程的区别？</h3><p>进程是操作系统分配资源的最小单元，线程是操作系统调度的最小单元。<br>一个程序至少有一个进程,一个进程至少有一个线程。</p>
+<h3 id="3、什么是多线程中的上下文切换？"><a href="#3、什么是多线程中的上下文切换？" class="headerlink" title="3、什么是多线程中的上下文切换？"></a>3、什么是多线程中的上下文切换？</h3><p>多线程会共同使用一组计算机上的 CPU，而线程数大于给程序分配的 CPU 数量时，为了让各个线程都有执行的机会，就需要轮转使用 CPU。不同的线程切换使用CPU发生的切换数据等就是上下文切换。  </p>
+<h3 id="4、死锁与活锁的区别，死锁与饥饿的区别？"><a href="#4、死锁与活锁的区别，死锁与饥饿的区别？" class="headerlink" title="4、死锁与活锁的区别，死锁与饥饿的区别？"></a>4、死锁与活锁的区别，死锁与饥饿的区别？</h3><p>死锁：是指两个或两个以上的进程（或线程）在执行过程中，因争夺资源而造成的一种互相等待的现象，若无外力作用，它们都将无法推进下去。</p>
+<p><strong>产生死锁的必要条件：</strong></p>
+<p>1、互斥条件：所谓互斥就是进程在某一时间内独占资源。<br>2、请求与保持条件：一个进程因请求资源而阻塞时，对已获得的资源保持不放。<br>3、不剥夺条件:进程已获得资源，在末使用完之前，不能强行剥夺。<br>4、循环等待条件:若干进程之间形成一种头尾相接的循环等待资源关系。<br><strong>活锁：</strong>任务或者执行者没有被阻塞，由于某些条件没有满足，导致一直重复尝试，失败，尝试，失败。</p>
+<p>活锁和死锁的区别在于，处于活锁的实体是在不断的改变状态，所谓的“活”， 而处于死锁的实体表现为等待；活锁有可能自行解开，死锁则不能。<br><strong>饥饿：</strong>一个或者多个线程因为种种原因无法获得所需要的资源，导致一直无法执行的状态。</p>
+<p>Java 中导致饥饿的原因：</p>
+<p>1、高优先级线程吞噬所有的低优先级线程的 CPU 时间。<br>2、线程被永久堵塞在一个等待进入同步块的状态，因为其他线程总是能在它之前持续地对该同步块进行访问。<br>3、线程在等待一个本身也处于永久等待完成的对象(比如调用这个对象的 wait 方法)，因为其他线程总是被持续地获得唤醒。  </p>
+<h3 id="5、Java-中用到的线程调度算法是什么？"><a href="#5、Java-中用到的线程调度算法是什么？" class="headerlink" title="5、Java 中用到的线程调度算法是什么？"></a>5、Java 中用到的线程调度算法是什么？</h3><p>采用时间片轮转的方式。可以设置线程的优先级，会映射到下层的系统上面的优先级上，如非特别需要，尽量不要用，防止线程饥饿。  </p>
+<h3 id="6、什么是线程组，为什么在-Java-中不推荐使用？"><a href="#6、什么是线程组，为什么在-Java-中不推荐使用？" class="headerlink" title="6、什么是线程组，为什么在 Java 中不推荐使用？"></a>6、什么是线程组，为什么在 Java 中不推荐使用？</h3><p>ThreadGroup 类，可以把线程归属到某一个线程组中，线程组中可以有线程对象，也可以有线程组，组中还可以有线程，这样的组织结构有点类似于树的形式。</p>
+<p>为什么不推荐使用？因为使用有很多的安全隐患吧，没有具体追究，如果需要使用，推荐使用线程池。  </p>
+<h3 id="7、为什么使用-Executor-框架？"><a href="#7、为什么使用-Executor-框架？" class="headerlink" title="7、为什么使用 Executor 框架？"></a>7、为什么使用 Executor 框架？</h3><p>每次执行任务创建线程 new Thread()比较消耗性能，创建一个线程是比较耗时、耗资源的。<br>调用 new Thread()创建的线程缺乏管理，被称为野线程，而且可以无限制的创建，线程之间的相互竞争会导致过多占用系统资源而导致系统瘫痪，还有线程之间的频繁交替也会消耗很多系统资源。<br>接使用 new Thread() 启动的线程不利于扩展，比如定时执行、定期执行、定时定期执行、线程中断等都不便实现。  </p>
+<h3 id="8、在-Java-中-Executor-和-Executors-的区别？"><a href="#8、在-Java-中-Executor-和-Executors-的区别？" class="headerlink" title="8、在 Java 中 Executor 和 Executors 的区别？"></a>8、在 Java 中 Executor 和 Executors 的区别？</h3><p>Executors 工具类的不同方法按照我们的需求创建了不同的线程池，来满足业务的需求。</p>
+<p>Executor 接口对象能执行我们的线程任务。</p>
+<p>ExecutorService 接口继承了 Executor 接口并进行了扩展，提供了更多的方法我们能获得任务执行的状态并且可以获取任务的返回值。</p>
+<p>使用 ThreadPoolExecutor 可以创建自定义线程池。  </p>
+<p>Future 表示异步计算的结果，他提供了检查计算是否完成的方法，以等待计算的完成，并可以使用 get()方法获取计算的结果。</p>
+<h3 id="9、什么是-Java-Timer-类？如何创建一个有特定时间间隔的任务？"><a href="#9、什么是-Java-Timer-类？如何创建一个有特定时间间隔的任务？" class="headerlink" title="9、什么是 Java Timer 类？如何创建一个有特定时间间隔的任务？"></a>9、什么是 Java Timer 类？如何创建一个有特定时间间隔的任务？</h3><p>java.util.Timer 是一个工具类，可以用于安排一个线程在未来的某个特定时间执行。Timer 类可以用安排一次性任务或者周期任务。<br>java.util.TimerTask 是一个实现了 Runnable 接口的抽象类，我们需要去继承这个类来创建我们自己的定时任务并使用 Timer 去安排它的执行。  </p>
+<h3 id="10、什么是原子操作？在-Java-Concurrency-API-中有哪些原子类-atomic-classes-？"><a href="#10、什么是原子操作？在-Java-Concurrency-API-中有哪些原子类-atomic-classes-？" class="headerlink" title="10、什么是原子操作？在 Java Concurrency API 中有哪些原子类(atomic classes)？"></a>10、什么是原子操作？在 Java Concurrency API 中有哪些原子类(atomic classes)？</h3><p>原子操作（atomic operation）意为”不可被中断的一个或一系列操作” 。<br>处理器使用基于对缓存加锁或总线加锁的方式来实现多处理器之间的原子操作。<br>在 Java 中可以通过锁和循环 CAS 的方式来实现原子操作。 CAS 操作——Compare &amp; Set，或是 Compare &amp; Swap，现在几乎所有的 CPU 指令都支持 CAS<br>的原子操作。<br>原子操作是指一个不受其他操作影响的操作任务单元。原子操作是在多线程环境下避免数据不一致必须的手段。<br>int++并不是一个原子操作，所以当一个线程读取它的值并加 1 时，另外一个线程有可能会读到之前的值，这就会引发错误。<br>为了解决这个问题，必须保证增加操作是原子的，在 JDK1.5 之前我们可以使用同步技术来做到这一点。到 JDK1.5，java.util.concurrent.atomic 包提供了 int 和<br>long 类型的原子包装类，它们可以自动的保证对于他们的操作是原子的并且不需要使用同步。  </p>
+<p>java.util.concurrent 这个包里面提供了一组原子类。其基本的特性就是在多线程环境下，当有多个线程同时执行这些类的实例包含的方法时，具有排他性，即当<br>某个线程进入方法，执行其中的指令时，不会被其他线程打断，而别的线程就像自旋锁一样，一直等到该方法执行完成，才由 JVM 从等待队列中选择一个另一个<br>线程进入，这只是一种逻辑上的理解。<br>原子类：AtomicBoolean，AtomicInteger，AtomicLong，AtomicReference<br>原子数组：AtomicIntegerArray，AtomicLongArray，AtomicReferenceArray<br>原子属性更新器：AtomicLongFieldUpdater，AtomicIntegerFieldUpdater，AtomicReferenceFieldUpdater<br>解决 ABA 问题的原子类：AtomicMarkableReference（通过引入一个 boolean来反映中间有没有变过），AtomicStampedReference（通过引入一个 int 来累加来反映中间有没有变过）  </p>
+<h3 id="11、Java-Concurrency-API-中的-Lock-接口-Lock-interface-是什么？对比同步它有什么优势？"><a href="#11、Java-Concurrency-API-中的-Lock-接口-Lock-interface-是什么？对比同步它有什么优势？" class="headerlink" title="11、Java Concurrency API 中的 Lock 接口(Lock interface)是什么？对比同步它有什么优势？"></a>11、Java Concurrency API 中的 Lock 接口(Lock interface)是什么？对比同步它有什么优势？</h3><p>Lock 接口比同步方法和同步块提供了更具扩展性的锁操作。<br>他们允许更灵活的结构，可以具有完全不同的性质，并且可以支持多个相关类的条件对象。<br>它的优势有：<br>可以使锁更公平<br>可以使线程在等待锁的时候响应中断<br>可以让线程尝试获取锁，并在无法获取锁的时候立即返回或者等待一段时间<br>可以在不同的范围，以不同的顺序获取和释放锁  </p>
+<h3 id="12、什么是-Executors-框架？"><a href="#12、什么是-Executors-框架？" class="headerlink" title="12、什么是 Executors 框架？"></a>12、什么是 Executors 框架？</h3><p>Executor 框架是一个根据一组执行策略调用，调度，执行和控制的异步任务的框架。<br>无限制的创建线程会引起应用程序内存溢出。所以创建一个线程池是个更好的的解决方案，因为可以限制线程的数量并且可以回收再利用这些线程。利用Executors 框架可以非常方便的创建一个线程池。  </p>
+<h3 id="13、什么是阻塞队列？阻塞队列的实现原理是什么？如何使用阻塞队列来实现生产者-消费者模型？"><a href="#13、什么是阻塞队列？阻塞队列的实现原理是什么？如何使用阻塞队列来实现生产者-消费者模型？" class="headerlink" title="13、什么是阻塞队列？阻塞队列的实现原理是什么？如何使用阻塞队列来实现生产者-消费者模型？"></a>13、什么是阻塞队列？阻塞队列的实现原理是什么？如何使用阻塞队列来实现生产者-消费者模型？</h3><p>阻塞队列（BlockingQueue）是一个支持两个附加操作的队列。<br>这两个附加的操作是：在队列为空时，获取元素的线程会等待队列变为非空。当队列满时，存储元素的线程会等待队列可用。<br>阻塞队列常用于生产者和消费者的场景，生产者是往队列里添加元素的线程，消费者是从队列里拿元素的线程。阻塞队列就是生产者存放元素的容器，而消费者<br>也只从容器里拿元素。<br>JDK7 提供了 7 个阻塞队列。分别是：<br>ArrayBlockingQueue ：一个由数组结构组成的有界阻塞队列。<br>LinkedBlockingQueue ：一个由链表结构组成的有界阻塞队列。<br>PriorityBlockingQueue ：一个支持优先级排序的无界阻塞队列。<br>DelayQueue：一个使用优先级队列实现的无界阻塞队列。<br>SynchronousQueue：一个不存储元素的阻塞队列。<br>LinkedTransferQueue：一个由链表结构组成的无界阻塞队列。<br>LinkedBlockingDeque：一个由链表结构组成的双向阻塞队列。<br>Java 5 之前实现同步存取时，可以使用普通的一个集合，然后在使用线程的协作和线程同步可以实现生产者，消费者模式，主要的技术就是用好，wait ,notify,notifyAll,sychronized 这些关键字。而在 java 5 之后，可以使用阻塞队列来实现，此方式大大简少了代码量，使得多线程编程更加容易，安全方面也有保障。<br>BlockingQueue 接口是 Queue 的子接口，它的主要用途并不是作为容器，而是作为线程同步的的工具，因此他具有一个很明显的特性，当生产者线程试图向BlockingQueue 放入元素时，如果队列已满，则线程被阻塞，当消费者线程试图从中取出一个元素时，如果队列为空，则该线程会被阻塞，正是因为它所具有这<br>个特性，所以在程序中多个线程交替向 BlockingQueue 中放入元素，取出元素，它可以很好的控制线程之间的通信。<br>阻塞队列使用最经典的场景就是 socket 客户端数据的读取和解析，读取数据的线程不断将数据放入队列，然后解析线程不断从队列取数据解析。  </p>
+<h3 id="14、什么是-Callable-和-Future"><a href="#14、什么是-Callable-和-Future" class="headerlink" title="14、什么是 Callable 和 Future?"></a>14、什么是 Callable 和 Future?</h3><p>Callable 接口类似于 Runnable，从名字就可以看出来了，但是 Runnable 不会返回结果，并且无法抛出返回结果的异常，而 Callable 功能更强大一些，被线程执行后，可以返回值，这个返回值可以被 Future 拿到，也就是说，Future 可以拿到异步执行任务的返回值。可以认为是带有回调的 Runnable。<br>Future 接口表示异步任务，是还没有完成的任务给出的未来结果。所以说 Callable用于产生结果，Future 用于获取结果。  </p>
+<h3 id="15、什么是-FutureTask-使用-ExecutorService-启动任务。"><a href="#15、什么是-FutureTask-使用-ExecutorService-启动任务。" class="headerlink" title="15、什么是 FutureTask?使用 ExecutorService 启动任务。"></a>15、什么是 FutureTask?使用 ExecutorService 启动任务。</h3><p>在 Java 并发程序中 FutureTask 表示一个可以取消的异步运算。它有启动和取消运算、查询运算是否完成和取回运算结果等方法。只有当运算完成的时候结果才能取回，如果运算尚未完成 get 方法将会阻塞。一个 FutureTask 对象可以对调用了 Callable 和 Runnable 的对象进行包装，由于 FutureTask 也是调用了 Runnable接口所以它可以提交给 Executor 来执行。 </p>
+<h3 id="16、什么是并发容器的实现？"><a href="#16、什么是并发容器的实现？" class="headerlink" title="16、什么是并发容器的实现？"></a>16、什么是并发容器的实现？</h3><p>何为同步容器：可以简单地理解为通过 synchronized 来实现同步的容器，如果有多个线程调用同步容器的方法，它们将会串行执行。比如 Vector，Hashtable，以及 Collections.synchronizedSet，synchronizedList 等方法返回的容器。<br>可以通过查看 Vector，Hashtable 等这些同步容器的实现代码，可以看到这些容器实现线程安全的方式就是将它们的状态封装起来，并在需要同步的方法上加上关键字 synchronized。<br>并发容器使用了与同步容器完全不同的加锁策略来提供更高的并发性和伸缩性，例如在 ConcurrentHashMap 中采用了一种粒度更细的加锁机制，可以称为分段锁，在这种锁机制下，允许任意数量的读线程并发地访问 map，并且执行读操作的线程和写操作的线程也可以并发的访问 map，同时允许一定数量的写操作线程并发地修改 map，所以它可以在并发环境下实现更高的吞吐量。</p>
+<h3 id="17、多线程同步和互斥有几种实现方法，都是什么？"><a href="#17、多线程同步和互斥有几种实现方法，都是什么？" class="headerlink" title="17、多线程同步和互斥有几种实现方法，都是什么？"></a>17、多线程同步和互斥有几种实现方法，都是什么？</h3><p>线程同步是指线程之间所具有的一种制约关系，一个线程的执行依赖另一个线程的消息，当它没有得到另一个线程的消息时应等待，直到消息到达时才被唤醒。线程互斥是指对于共享的进程系统资源，在各单个线程访问时的排它性。当有若干个线程都要使用某一共享资源时，任何时刻最多只允许一个线程去使用，其它要使用该资源的线程必须等待，直到占用资源者释放该资源。线程互斥可以看成是一种特殊的线程同步。<br>线程间的同步方法大体可分为两类：用户模式和内核模式。顾名思义，内核模式就是指利用系统内核对象的单一性来进行同步，使用时需要切换内核态与用户态，而用户模式就是不需要切换到内核态，只在用户态完成操作。<br>用户模式下的方法有：原子操作（例如一个单一的全局变量），临界区。内核模式下的方法有：事件，信号量，互斥量。  </p>
+<h3 id="18、什么是竞争条件？你怎样发现和解决竞争？"><a href="#18、什么是竞争条件？你怎样发现和解决竞争？" class="headerlink" title="18、什么是竞争条件？你怎样发现和解决竞争？"></a>18、什么是竞争条件？你怎样发现和解决竞争？</h3><p>当多个进程都企图对共享数据进行某种处理，而最后的结果又取决于进程运行的顺序时，则我们认为这发生了竞争条件（race condition）。</p>
+<h3 id="19、你将如何使用-thread-dump？你将如何分析-Thread-dump？"><a href="#19、你将如何使用-thread-dump？你将如何分析-Thread-dump？" class="headerlink" title="19、你将如何使用 thread dump？你将如何分析 Thread dump？"></a>19、你将如何使用 thread dump？你将如何分析 Thread dump？</h3><p><strong>新建状态（New）</strong><br>用 new 语句创建的线程处于新建状态，此时它和其他 Java 对象一样，仅仅在堆区中被分配了内存。<br><strong>就绪状态（Runnable）</strong>  </p>
+<p>当一个线程对象创建后，其他线程调用它的 start()方法，该线程就进入就绪状态，Java 虚拟机会为它创建方法调用栈和程序计数器。处于这个状态的线程位于可运<br>行池中，等待获得 CPU 的使用权。</p>
+<p><strong>运行状态（Running）</strong></p>
+<p>处于这个状态的线程占用 CPU，执行程序代码。只有处于就绪状态的线程才有机会转到运行状态。</p>
+<p><strong>阻塞状态（Blocked）</strong></p>
+<p>阻塞状态是指线程因为某些原因放弃 CPU，暂时停止运行。当线程处于阻塞状态时，Java 虚拟机不会给线程分配 CPU。直到线程重新进入就绪状态，它才有机会转到运行状态。  </p>
+<p><strong>阻塞状态可分为以下 3 种：</strong><br>位于对象等待池中的阻塞状态（Blocked in object’s wait pool）：<br>当线程处于运行状态时，如果执行了某个对象的 wait()方法，Java 虚拟机就会把线程放到这个对象的等待池中，这涉及到“线程通信”的内容。<br>位于对象锁池中的阻塞状态（Blocked in object’s lock pool）：<br>当线程处于运行状态时，试图获得某个对象的同步锁时，如果该对象的同步锁已经被其他线程占用，Java 虚拟机就会把这个线程放到这个对象的锁池中，这涉及到“线程同步”的内容。<br>其他阻塞状态（Otherwise Blocked）：<br>当前线程执行了 sleep()方法，或者调用了其他线程的 join()方法，或者发出了 I&#x2F;O请求时，就会进入这个状态。  </p>
+<h3 id="20、为什么我们调用-start-方法时会执行-run-方法，为什么我们不能直接调用-run-方法？"><a href="#20、为什么我们调用-start-方法时会执行-run-方法，为什么我们不能直接调用-run-方法？" class="headerlink" title="20、为什么我们调用 start()方法时会执行 run()方法，为什么我们不能直接调用 run()方法？"></a>20、为什么我们调用 start()方法时会执行 run()方法，为什么我们不能直接调用 run()方法？</h3><p>当你调用 start()方法时你将创建新的线程，并且执行在 run()方法里的代码。但是如果你直接调用 run()方法，它不会创建新的线程也不会执行调用线程的代码，只会把 run 方法当作普通方法去执行。  </p>
+<h3 id="21、Java-中你怎样唤醒一个阻塞的线程？"><a href="#21、Java-中你怎样唤醒一个阻塞的线程？" class="headerlink" title="21、Java 中你怎样唤醒一个阻塞的线程？"></a>21、Java 中你怎样唤醒一个阻塞的线程？</h3><p>在 Java 发展史上曾经使用 suspend()、resume()方法对于线程进行阻塞唤醒，但随之出现很多问题，比较典型的还是死锁问题。<br>解决方案可以使用以对象为目标的阻塞，即利用 Object 类的 wait()和 notify()方法实现线程阻塞。<br>首先，wait、notify 方法是针对对象的，调用任意对象的 wait()方法都将导致线程阻塞，阻塞的同时也将释放该对象的锁，相应地，调用任意对象的 notify()方法则将随机解除该对象阻塞的线程，但它需要重新获取改对象的锁，直到获取成功才能往下执行；其次，wait、notify 方法必须在 synchronized 块或方法中被调用，并且要保证同步块或方法的锁对象与调用 wait、notify 方法的对象是同一个，如此一来在调用 wait 之前当前线程就已经成功获取某对象的锁，执行 wait 阻塞后当前线程就将之前获取的对象锁释放。  </p>
+<h3 id="22、在-Java-中-CycliBarriar-和-CountdownLatch-有什么区别？"><a href="#22、在-Java-中-CycliBarriar-和-CountdownLatch-有什么区别？" class="headerlink" title="22、在 Java 中 CycliBarriar 和 CountdownLatch 有什么区别？"></a>22、在 Java 中 CycliBarriar 和 CountdownLatch 有什么区别？</h3><p>CyclicBarrier 可以重复使用，而 CountdownLatch 不能重复使用。  </p>
+<p>Java 的 concurrent 包里面的 CountDownLatch 其实可以把它看作一个计数器，只不过这个计数器的操作是原子操作，同时只能有一个线程去操作这个计数器，也就是同时只能有一个线程去减这个计数器里面的值。<br>你可以向 CountDownLatch 对象设置一个初始的数字作为计数值，任何调用这个对象上的 await()方法都会阻塞，直到这个计数器的计数值被其他的线程减为 0 为止。<br>所以在当前计数到达零之前，await 方法会一直受阻塞。之后，会释放所有等待的线程，await 的所有后续调用都将立即返回。这种现象只出现一次——计数无法被重置。如果需要重置计数，请考虑使用 CyclicBarrier。<br>CountDownLatch 的一个非常典型的应用场景是：有一个任务想要往下执行，但必须要等到其他的任务执行完毕后才可以继续往下执行。假如我们这个想要继续往下执行的任务调用一个 CountDownLatch 对象的 await()方法，其他的任务执行完自己的任务后调用同一个 CountDownLatch 对象上的 countDown()方法，这个调用 await()方法的任务将一直阻塞等待，直到这个 CountDownLatch 对象的计数值减到 0 为止。<br>CyclicBarrier 一个同步辅助类，它允许一组线程互相等待，直到到达某个公共屏障点 (common barrier point)。在涉及一组固定大小的线程的程序中，这些线程必须不时地互相等待，此时 CyclicBarrier 很有用。因为该 barrier 在释放等待线程后可以重用，所以称它为循环 的 barrier。</p>
+<h3 id="23、什么是不可变对象，它对写并发应用有什么帮助？"><a href="#23、什么是不可变对象，它对写并发应用有什么帮助？" class="headerlink" title="23、什么是不可变对象，它对写并发应用有什么帮助？"></a>23、什么是不可变对象，它对写并发应用有什么帮助？</h3><p>不可变对象(Immutable Objects)即对象一旦被创建它的状态（对象的数据，也即对象属性值）就不能改变，反之即为可变对象(Mutable Objects)。<br>不可变对象的类即为不可变类(Immutable Class)。Java 平台类库中包含许多不可变类，如 String、基本类型的包装类、BigInteger 和 BigDecimal 等。<br>不可变对象天生是线程安全的。它们的常量（域）是在构造函数中创建的。既然它们的状态无法修改，这些常量永远不会变。  </p>
+<p>不可变对象永远是线程安全的。<br>只有满足如下状态，一个对象才是不可变的；<br>它的状态不能在创建后再被修改；<br>所有域都是 final 类型；并且，它被正确创建（创建期间没有发生 this 引用的逸出） 。</p>
+<h3 id="24、什么是多线程中的上下文切换？"><a href="#24、什么是多线程中的上下文切换？" class="headerlink" title="24、什么是多线程中的上下文切换？"></a>24、什么是多线程中的上下文切换？</h3><p>在上下文切换过程中，CPU 会停止处理当前运行的程序，并保存当前程序运行的具体位置以便之后继续运行。从这个角度来看，上下文切换有点像我们同时阅读几本书，在来回切换书本的同时我们需要记住每本书当前读到的页码。在程序中，上下文切换过程中的“页码”信息是保存在进程控制块（PCB）中的。PCB 还经常被称作“切换桢”（switchframe）。“页码”信息会一直保存到 CPU 的内存中，直到他们被再次使用。<br>上下文切换是存储和恢复 CPU 状态的过程，它使得线程执行能够从中断点恢复执行。上下文切换是多任务操作系统和多线程环境的基本特征  。</p>
+<h3 id="25、Java-中用到的线程调度算法是什么？"><a href="#25、Java-中用到的线程调度算法是什么？" class="headerlink" title="25、Java 中用到的线程调度算法是什么？"></a>25、Java 中用到的线程调度算法是什么？</h3><p>计算机通常只有一个 CPU,在任意时刻只能执行一条机器指令,每个线程只有获得CPU 的使用权才能执行指令.所谓多线程的并发运行,其实是指从宏观上看,各个线程轮流获得 CPU 的使用权,分别执行各自的任务.在运行池中,会有多个处于就绪状态的线程在等待 CPU,JAVA 虚拟机的一项任务就是负责线程的调度,线程调度是指按照特定机制为多个线程分配 CPU 的使用权.  </p>
+<p>有两种调度模型：分时调度模型和抢占式调度模型。<br>分时调度模型是指让所有的线程轮流获得 cpu 的使用权,并且平均分配每个线程占用的 CPU 的时间片这个也比较好理解。<br>java 虚拟机采用抢占式调度模型，是指优先让可运行池中优先级高的线程占用CPU，如果可运行池中的线程优先级相同，那么就随机选择一个线程，使其占用CPU。处于运行状态的线程会一直运行，直至它不得不放弃 CPU。  </p>
+]]></content>
+      <categories>
+        <category>面试宝典</category>
+      </categories>
+      <tags>
+        <tag>JUC</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>虚拟DOM</title>
     <url>/vue/vue-virtual-dom/</url>
     <content><![CDATA[<h3 id="1-对虚拟DOM的理解？"><a href="#1-对虚拟DOM的理解？" class="headerlink" title="1. 对虚拟DOM的理解？"></a>1. 对虚拟DOM的理解？</h3><p>从本质上来说，Virtual Dom是一个JavaScript对象，通过对象的方式来表示DOM结构。将页面的状态抽象为JS对象的形式，配合不同的渲染工具，使跨平台渲染成为可能。通过事务处理机制，将多次DOM修改的结果一次性的更新到页面上，从而有效的减少页面渲染的次数，减少修改DOM的重绘重排次数，提高渲染性能</p>
@@ -1208,7 +1566,7 @@
 
 <p>$set()方法相当于手动的去把obj.b处理成一个响应式的属性，此时视图也会跟着改变了。</p>
 <h3 id="20-Vue中封装的数组方法有哪些，其如何实现页面更新"><a href="#20-Vue中封装的数组方法有哪些，其如何实现页面更新" class="headerlink" title="20. Vue中封装的数组方法有哪些，其如何实现页面更新"></a>20. Vue中封装的数组方法有哪些，其如何实现页面更新</h3><p>在Vue中，对响应式处理利用的是Object.defineProperty对数据进行拦截，而这个方法并不能监听到数组内部变化，数组长度变化，数组的截取变化等，所以需要对这些操作进行hack，让Vue能监听到其中的变化。</p>
-<p><img src="/%5Cimages%5Cvue%5Cclip_image002.gif" alt="VUE基础面试题"></p>
+<p><img src="/images/vue/clip_image002.gif" alt="VUE基础面试题"></p>
 <p>那Vue是如何实现让这些数组方法实现元素的实时更新的呢，下面是Vue中对这些方法的封装：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 缓存数组原型</span><br><span class="line">const arrayProto = Array.prototype;</span><br><span class="line">// 实现 arrayMethods.__proto__ === Array.prototype</span><br><span class="line">export const arrayMethods = Object.create(arrayProto);</span><br><span class="line">// 需要进行功能拓展的方法</span><br><span class="line">const methodsToPatch = [</span><br><span class="line">  &quot;push&quot;,</span><br><span class="line">  &quot;pop&quot;,</span><br><span class="line">  &quot;shift&quot;,</span><br><span class="line">  &quot;unshift&quot;,</span><br><span class="line">  &quot;splice&quot;,</span><br><span class="line">  &quot;sort&quot;,</span><br><span class="line">  &quot;reverse&quot;</span><br><span class="line">];</span><br><span class="line"> </span><br><span class="line">/**</span><br><span class="line"> * Intercept mutating methods and emit events</span><br><span class="line"> */</span><br><span class="line">methodsToPatch.forEach(function(method) &#123;</span><br><span class="line">  // 缓存原生数组方法</span><br><span class="line">  const original = arrayProto[method];</span><br><span class="line">  def(arrayMethods, method, function mutator(...args) &#123;</span><br><span class="line">    // 执行并缓存原生数组功能</span><br><span class="line">    const result = original.apply(this, args);</span><br><span class="line">    // 响应式处理</span><br><span class="line">    const ob = this.__ob__;</span><br><span class="line">    let inserted;</span><br><span class="line">    switch (method) &#123;</span><br><span class="line">    // push、unshift会新增索引，所以要手动observer</span><br><span class="line">      case &quot;push&quot;:</span><br><span class="line">      case &quot;unshift&quot;:</span><br><span class="line">        inserted = args;</span><br><span class="line">        break;</span><br><span class="line">      // splice方法，如果传入了第三个参数，也会有索引加入，也要手动observer。</span><br><span class="line">      case &quot;splice&quot;:</span><br><span class="line">        inserted = args.slice(2);</span><br><span class="line">        break;</span><br><span class="line">    &#125;</span><br><span class="line">    // </span><br><span class="line">    if (inserted) ob.observeArray(inserted);// 获取插入的值，并设置响应式监听</span><br><span class="line">    // notify change</span><br><span class="line">    ob.dep.notify();// 通知依赖更新</span><br><span class="line">    // 返回原生数组方法的执行结果</span><br><span class="line">    return result;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
@@ -1221,7 +1579,7 @@
 </li>
 </ul>
 <p>区别：</p>
-<p><img src="/%5Cimages%5Cvue%5Cvue-1.png" alt="VUE基础面试题"></p>
+<p><img src="/images/vue/vue-1.png" alt="VUE基础面试题"></p>
 <h3 id="22-Vue-template-到-render-的过程"><a href="#22-Vue-template-到-render-的过程" class="headerlink" title="22. Vue template 到 render 的过程"></a>22. Vue template 到 render 的过程</h3><p>vue的模版编译过程主要如下：template -&gt; ast -&gt; render函数</p>
 <p>vue 在模版编译版本的码中会执行 compileToFunctions 将template转化为render函数：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 将模板编译为render函数</span><br><span class="line">const &#123; render, staticRenderFns &#125; = compileToFunctions(template,options//省略&#125;, this)</span><br></pre></td></tr></table></figure>
@@ -1256,7 +1614,7 @@
 <li><p>extends 主要是为了便于扩展单文件组件，接收一个对象或构造函数。</p>
 </li>
 </ul>
-<p><img src="/%5Cimages%5Cvue%5Cvue-2.png" alt="image-20240202233217284"></p>
+<p><img src="/images/vue/vue-2.png" alt="image-20240202233217284"></p>
 <p>（2）mergeOptions 的执行过程</p>
 <p>·     规范化选项（normalizeProps、normalizelnject、normalizeDirectives)</p>
 <p>·     对未合并的选项，进行判断</p>
