@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.cicoding.com/spring/spring/</loc>
+    
+    <lastmod>2024-07-08T14:44:40.484Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.cicoding.com/java/java-concurrent-programming2/</loc>
     
     <lastmod>2024-03-01T14:37:05.136Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>https://www.cicoding.com/mysql/mysql/</loc>
     
     <lastmod>2024-02-24T15:35:45.658Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.cicoding.com/spring/spring/</loc>
-    
-    <lastmod>2024-02-24T15:16:54.113Z</lastmod>
     
   </url>
   
