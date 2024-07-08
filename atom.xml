@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.cicoding.com/"/>
-  <updated>2024-02-24T15:15:21.837Z</updated>
+  <updated>2024-07-08T15:01:39.036Z</updated>
   <id>https://www.cicoding.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Spring面试题总结(二)</title>
-    <link href="https://www.cicoding.com/spring/spring2/"/>
-    <id>https://www.cicoding.com/spring/spring2/</id>
+    <title>Spring面试题总结(一)</title>
+    <link href="https://www.cicoding.com/spring/spring/"/>
+    <id>https://www.cicoding.com/spring/spring/</id>
     <published>2024-02-25T09:12:38.000Z</published>
-    <updated>2024-02-24T15:15:21.837Z</updated>
+    <updated>2024-07-08T15:01:39.036Z</updated>
     
     <content type="html"><![CDATA[<p>Spring作为现代开发中最流行的框架之一，让开发者可以更加方便高效地构建应用系统。但是对于初学者而言，常常会遇到很多困惑。本篇文章收集了50道常见的Spring面试题，并对每道题进行了详细的解释，希望能够对读者有所帮助。</p><h3 id="1-Spring是什么？作用是什么？"><a href="#1-Spring是什么？作用是什么？" class="headerlink" title="1.Spring是什么？作用是什么？"></a>1.Spring是什么？作用是什么？</h3><p>Spring是一个轻量级的JavaEE框架，它主要解决企业应用中的复杂性问题。Spring框架有三个核心部分：IoC容器、AOP和数据访问&#x2F;集成层。Spring中的IoC容器提供了一种对象创建和对象之间关系管理的机制，以实现松散耦合和可扩展性。AOP提供了一种很好的方式来实现横向关注点的处理，如事务管理，安全检查，缓存等。数据访问&#x2F;集成层则提供了许多针对不同数据持久化技术的实现，比如JDBC，ORM和NoSQL。</p><h3 id="2-你对IoC（控制反转-Inversion-of-Control）是怎么理解的？"><a href="#2-你对IoC（控制反转-Inversion-of-Control）是怎么理解的？" class="headerlink" title="2.你对IoC（控制反转 Inversion of Control）是怎么理解的？"></a>2.你对IoC（控制反转 Inversion of Control）是怎么理解的？</h3><p>IoC是一种设计思想，通过将对象之间的依赖关系交给容器来管理，从而实现松散耦合。在Spring中，IoC容器扮演了一个中心角色，负责创建对象，装配对象之间的依赖关系，并管理它们的整个生命周期。IoC还提供了一些高级功能，如AOP和事件驱动等，可以进一步增强应用程序的可维护性和可扩展性。</p><h3 id="3-什么是AOP（面向切面编程-Aspect-Oriented-Programming）？"><a href="#3-什么是AOP（面向切面编程-Aspect-Oriented-Programming）？" class="headerlink" title="3.什么是AOP（面向切面编程 Aspect Oriented Programming）？"></a>3.什么是AOP（面向切面编程 Aspect Oriented Programming）？</h3><p>AOP是一种编程范式，它能够在程序运行期间动态地将代码切入到原有代码的流程中，从而实现横向关注点的处理，如日志记录、事务管理和安全检查等。在Spring中，AOP是通过代理模式来实现的，在创建Bean时为Bean生成一个代理对象，代理对象能够拦截指定方法的调用，并在执行前或执行后执行特定操作。</p><h3 id="4-Spring中Bean之间的依赖关系是怎样的？"><a href="#4-Spring中Bean之间的依赖关系是怎样的？" class="headerlink" title="4.Spring中Bean之间的依赖关系是怎样的？"></a>4.Spring中Bean之间的依赖关系是怎样的？</h3><p>在Spring中，Bean之间的依赖关系主要通过构造函数注入、Setter方法注入和自动注入来实现。构造函数注入是通过Bean的构造方法注入其他Bean作为参数来实现；Setter方法注入是通过Bean的Setter方法来注入其他Bean；自动注入则是通过IoC容器在Bean创建时自动发现并注入其他Bean，可以通过设置@Autowired或@Resource注解来完成。</p><h3 id="5-Spring框架中的单例模式是怎样实现的？"><a href="#5-Spring框架中的单例模式是怎样实现的？" class="headerlink" title="5.Spring框架中的单例模式是怎样实现的？"></a>5.Spring框架中的单例模式是怎样实现的？</h3><p>在Spring中，默认情况下，所有的Bean都是单例的。当IoC容器创建一个Bean时，它会缓存该Bean的实例，并在后续请求中返回相同的实例。这种机制可以提高应用程序的性能并减少内存消耗，但也需要注意线程安全和状态管理等问题。</p><h3 id="6-Spring中的事务管理是如何实现的？"><a href="#6-Spring中的事务管理是如何实现的？" class="headerlink" title="6.Spring中的事务管理是如何实现的？"></a>6.Spring中的事务管理是如何实现的？</h3><p>Spring通过AOP在运行时动态地将事务相关的逻辑切入到指定的方法中，从而实现事务管理。通常情况下，Spring使用声明式事务管理来管理事务。开发者可以通过@Transactional注解或XML配置文件来定义事务范围、传播属性以及回滚规则等。</p><h3 id="7-Spring的优势是什么？"><a href="#7-Spring的优势是什么？" class="headerlink" title="7.Spring的优势是什么？"></a>7.Spring的优势是什么？</h3><p>Spring的主要优势有：</p><p>1）提高了应用程序的可扩展性和可维护性。</p><p>2）提供了一种松散耦合的方式来管理对象之间的依赖关系。</p><p>3）提供了完整的数据访问&#x2F;集成层，支持多种持久化技术。</p><p>4）提供了AOP支持，可以很方便地实现横向关注点的处理。</p><p>5）提供了很好的集成支持，可以与其他框架无缝协作。</p><h3 id="8-解释一下Spring中的BeanFactory和ApplicationContext有什么区别。"><a href="#8-解释一下Spring中的BeanFactory和ApplicationContext有什么区别。" class="headerlink" title="8.解释一下Spring中的BeanFactory和ApplicationContext有什么区别。"></a>8.解释一下Spring中的BeanFactory和ApplicationContext有什么区别。</h3><p>BeanFactory是Spring IoC容器的最基本形式，提供了基本的IoC功能。它是延迟初始化的，即当一个Bean被实际使用时才被创建。ApplicationContext是BeanFactory的子接口，提供了更多的企业级功能，如AOP，事件驱动，国际化等。ApplicationContext也是预初始化的，即在容器启动时就已经创建了所有的Bean。</p><h3 id="9-Spring中的注解有哪些？"><a href="#9-Spring中的注解有哪些？" class="headerlink" title="9.Spring中的注解有哪些？"></a>9.Spring中的注解有哪些？</h3><p>Spring中的常用注解有：</p><p>1）@Component、@Service、@Repository、@Controller：用于标识Bean的角色。</p><p>2）@Autowired、@Resource：用于自动装配Bean。</p><p>3）@PostConstruct、@PreDestroy：用于指定初始化和销毁方法。</p><p>4）@Transactional：用于声明式事务管理。</p><p>5）@Scope：用于指定Bean作用域。</p><h3 id="10-Spring-MVC框架的流程是怎样的？"><a href="#10-Spring-MVC框架的流程是怎样的？" class="headerlink" title="10.Spring MVC框架的流程是怎样的？"></a>10.Spring MVC框架的流程是怎样的？</h3><p>Spring MVC的处理流程如下：</p><p>1）客户端向服务器发起请求。</p><p>2）DispatcherServlet接收到请求并将请求发送给处理器映射器进行处理器的映射查找。</p><p>3）处理器映射器将请求的URL映射到相应的控制器(Controller)上，并返回处理器及其拦截器(如果有)。</p><p>4）DispatcherServlet调用处理器适配器(Adapter)执行映射的处理器(Controller)。</p><p>5）处理器(Controller)执行后返回ModelAndView对象。</p><p>6）DispatcherServlet将ModelAndView对象交给视图解析器(ViewResolver)进行解析。</p><p>7）视图解析器(ViewResolver)解析出对应的视图(View)。</p><p>8）DispatcherServlet将Model数据和View视图进行渲染后返回给客户端。</p><h3 id="11-Spring-Boot是什么？与传统的Spring框架有什么区别？"><a href="#11-Spring-Boot是什么？与传统的Spring框架有什么区别？" class="headerlink" title="11.Spring Boot是什么？与传统的Spring框架有什么区别？"></a>11.Spring Boot是什么？与传统的Spring框架有什么区别？</h3><p>Spring Boot是一种基于Spring的快速应用开发框架，它能够让开发者更加快速地搭建基于Spring的应用程序，并提供了自动化配置、快速启动等便利功能。相比传统的Spring框架，Spring Boot具有更简洁的配置方式和更快的启动速度，同时还提供了更多的功能和特性支持。</p><h3 id="12-解释一下Spring的生命周期。"><a href="#12-解释一下Spring的生命周期。" class="headerlink" title="12.解释一下Spring的生命周期。"></a>12.解释一下Spring的生命周期。</h3><p>在Spring中，Bean的生命周期包括以下几个阶段：</p><p>1）实例化：当IoC容器读取到Bean的定义后，创建一个新的Bean实例。</p><p>2）属性注入：IoC容器将Bean中声明的依赖关系和配置信息注入到Bean中。</p><p>3）BeanPostProcessor前置处理：如果Bean中定义了BeanPostProcessor接口的实现类，它们将在Bean初始化之前被调用。</p><p>4）初始化：如果Bean实现了InitializingBean接口，则在所有属性都被设置完毕后调用afterPropertiesSet()方法。同时，也可以通过@Bean(initMethod &#x3D; “init”)来指定Bean的初始化方法。</p><p>5）BeanPostProcessor后置处理：如果Bean中定义了BeanPostProcessor接口的实现类，它们将在Bean初始化之后被调用。</p><p>6）销毁：如果Bean实现了DisposableBean接口，则在容器关闭或者该Bean被从容器中移除时调用destroy()方法。同时，也可以通过@Bean(destroyMethod &#x3D; “destroy”)来指定Bean的销毁方法。</p><h3 id="13-Spring中的IOC如何管理对象？"><a href="#13-Spring中的IOC如何管理对象？" class="headerlink" title="13.Spring中的IOC如何管理对象？"></a>13.Spring中的IOC如何管理对象？</h3><p>在Spring中，IOC通过Bean工厂来管理对象，Bean工厂是提供了一种对象创建和对象之间关系管理的机制。它在读取配置文件时会自动创建和装配对象，并缓存这些对象以便后续使用。开发者可以通过构造器注入、Setter方法注入和自动注入等方式来管理对象之间的依赖关系。</p><h3 id="14-Spring中的AOP的具体实现方式有哪些？"><a href="#14-Spring中的AOP的具体实现方式有哪些？" class="headerlink" title="14.Spring中的AOP的具体实现方式有哪些？"></a>14.Spring中的AOP的具体实现方式有哪些？</h3><p>Spring中实现AOP的主要方式有两种：JDK动态代理和CGLIB代理。JDK动态代理又叫接口代理，它是基于Java反射机制实现的，要求目标对象必须实现至少一个接口；CGLIB代理则是基于字节码操作实现的，当目标对象没有实现接口时，它就会使用CGLIB代理。通常情况下，Spring默认使用JDK动态代理来实现AOP，但如果目标对象没有实现任何接口，则会自动切换到使用CGLIB代理。</p><h3 id="15-Spring中的JdbcTemplate是什么？使用JdbcTemplate需要做哪些配置？"><a href="#15-Spring中的JdbcTemplate是什么？使用JdbcTemplate需要做哪些配置？" class="headerlink" title="15.Spring中的JdbcTemplate是什么？使用JdbcTemplate需要做哪些配置？"></a>15.Spring中的JdbcTemplate是什么？使用JdbcTemplate需要做哪些配置？</h3><p>JdbcTemplate是Spring提供的一个对JDBC访问的封装，它简化了JDBC操作的繁琐和冗长，能够提高开发效率。使用JdbcTemplate需要在Spring的配置文件中配置基本数据源信息、配置JdbcTemplate Bean以及为JdbcTemplate Bean配置数据源。</p><h3 id="16-解释一下Spring中的循环依赖问题。"><a href="#16-解释一下Spring中的循环依赖问题。" class="headerlink" title="16.解释一下Spring中的循环依赖问题。"></a>16.解释一下Spring中的循环依赖问题。</h3><p>循环依赖指两个或多个Bean之间相互引用，形成了一个无限循环调用的情况。在Spring容器中，如果存在循环依赖，但是都是单例模式的Bean，则可以通过Spring容器提前暴露正在创建的Bean，从而避免循环依赖问题。如果存在循环依赖且其中一方是原型模式的Bean，则Spring无法处理这种情况。</p><h3 id="17-Spring中的事件驱动机制是怎样的？有哪些默认事件？"><a href="#17-Spring中的事件驱动机制是怎样的？有哪些默认事件？" class="headerlink" title="17.Spring中的事件驱动机制是怎样的？有哪些默认事件？"></a>17.Spring中的事件驱动机制是怎样的？有哪些默认事件？</h3><p>Spring中的事件驱动机制基于观察者模式实现。当一个Bean发生事件时，它会创建一个事件对象并将其发布到Spring容器上。容器中所有对该事件对象感兴趣的Bean都会收到事件通知并进行相应的处理。Spring中默认的事件有：ContextRefreshedEvent、ContextStartedEvent、ContextStoppedEvent和ContextClosedEvent。</p><h3 id="18-Spring的MVC框架中，HandlerAdapter的作用是什么？"><a href="#18-Spring的MVC框架中，HandlerAdapter的作用是什么？" class="headerlink" title="18.Spring的MVC框架中，HandlerAdapter的作用是什么？"></a>18.Spring的MVC框架中，HandlerAdapter的作用是什么？</h3><p>HandlerAdapter是Spring MVC框架中的一个重要组件，它的作用是将请求交给相应的处理器(Controller)进行处理，并负责调用处理器的方法来生成ModelAndView对象。</p><h3 id="19-Autowired和-Resource注解用来干嘛的？"><a href="#19-Autowired和-Resource注解用来干嘛的？" class="headerlink" title="19.@Autowired和@Resource注解用来干嘛的？"></a>19.@Autowired和@Resource注解用来干嘛的？</h3><p>@Autowired和@Resource注解是用于自动装配Bean的。@Autowired是Spring提供的注解，可以在Setter方法上、构造函数上、类属性上进行标注，用于自动注入匹配类型的Bean。@Resource是JavaEE提供的注解，可以在Setter方法上或类属性上进行标注，用于自动注入指定名称和类型匹配的Bean。</p><h3 id="20-Spring中的事务传播属性有哪些？"><a href="#20-Spring中的事务传播属性有哪些？" class="headerlink" title="20.Spring中的事务传播属性有哪些？"></a>20.Spring中的事务传播属性有哪些？</h3><p>Spring中的事务传播属性主要有以下几种：</p><p>1）PROPAGATION_REQUIRED：如果当前存在事务，则加入该事务；如果不存在事务，则创建一个新的事务。</p><p>2）PROPAGATION_SUPPORTS：如果当前存在事务，则加入该事务；如果不存在事务，则不开启事务。</p><p>3）PROPAGATION_MANDATORY：如果当前存在事务，则加入该事务；如果不存在事务，则抛出异常。</p><p>4）PROPAGATION_REQUIRES_NEW：无论是否存在事务，都创建一个新的事务并进行执行。</p>]]></content>
     
@@ -31,32 +31,6 @@
       
         &lt;p&gt;Spring作为现代开发中最流行的框架之一，让开发者可以更加方便高效地构建应用系统。但是对于初学者而言，常常会遇到很多困惑。本篇文章收集了50道常见的Spring面试题，并对每道题进行了详细的解释，希望能够对读者有所帮助。&lt;/p&gt;
 &lt;h3 id=&quot;1-Spring是什么？作
-      
-    
-    </summary>
-    
-    
-      <category term="面试宝典" scheme="https://www.cicoding.com/categories/%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8/"/>
-    
-    
-      <category term="Spring" scheme="https://www.cicoding.com/tags/Spring/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring面试题总结（一）</title>
-    <link href="https://www.cicoding.com/spring/spring/"/>
-    <id>https://www.cicoding.com/spring/spring/</id>
-    <published>2024-02-24T09:12:38.000Z</published>
-    <updated>2024-07-08T14:44:40.484Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="1、谈谈你对Spring的理解？"><a href="#1、谈谈你对Spring的理解？" class="headerlink" title="1、谈谈你对Spring的理解？"></a>1、谈谈你对Spring的理解？</h3><p><strong>一个轻量级的IOC和AOP容器框架</strong>，是为Java应用程序提供基础性服务的一套框架。</p><p>目的是用于简化企业级应用程序的开发，使开发者<strong>只需要关心业务需求</strong>。</p><ul><li>常见的三种配置方式：</li><li><ul><li>基于XML的配置；</li><li>基于注解的配置；</li><li>基于Java的配置。</li></ul></li></ul><h4 id="1-1-发展历程"><a href="#1-1-发展历程" class="headerlink" title="1.1 发展历程"></a>1.1 发展历程</h4><p><img src="/images/spring/spring1.png" alt="Spring面试题总结"></p><h4 id="1-2-Spirng的组成"><a href="#1-2-Spirng的组成" class="headerlink" title="1.2 Spirng的组成"></a>1.2 Spirng的组成</h4><p>Spring Core：核心类库，提供IOC服务；</p><p>Spring Context：提供框架式的Bean访问方式，以及企业级功能（JNDL、定时任务等）；</p><p>Spring AOP：AOP服务；</p><p>Spring DAO：对JDBC的抽象，简化了数据访问异常的处理；</p><p>Sping ORM：对现有的ORM框架的支持；</p><p>Spring Web：提供了基本的面向Web的综合特性，例如多方文件上传；</p><p>Spring MVC：提供面向Web应用的Model-View-Controller实现。<br><img src="/images/spring/spring2.png" alt="在这里插入图片描述"></p><h4 id="1-3-Spring的好处"><a href="#1-3-Spring的好处" class="headerlink" title="1.3 Spring的好处"></a>1.3 Spring的好处</h4>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;1、谈谈你对Spring的理解？&quot;&gt;&lt;a href=&quot;#1、谈谈你对Spring的理解？&quot; class=&quot;headerlink&quot; title=&quot;1、谈谈你对Spring的理解？&quot;&gt;&lt;/a&gt;1、谈谈你对Spring的理解？&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;一个轻量级的
       
     
     </summary>
